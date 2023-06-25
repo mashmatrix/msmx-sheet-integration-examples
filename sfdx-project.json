@@ -2,11 +2,24 @@
   "packageDirectories": [
     {
       "path": "force-app",
-      "default": true
+      "default": true,
+      "package": "msmx-sheet-integration-examples",
+      "versionName": "ver 0.2",
+      "versionNumber": "0.2.0.NEXT",
+      "versionDescription": "",
+      "dependencies": [
+        {
+          "package": "Mashmatrix Sheet"
+        }
+      ]
     }
   ],
   "name": "msmx-sheet-integration-examples",
   "namespace": "",
   "sfdcLoginUrl": "https://login.salesforce.com",
-  "sourceApiVersion": "57.0"
+  "sourceApiVersion": "57.0",
+  "packageAliases": {
+    "msmx-sheet-integration-examples": "0HoA70000000006KAA",
+    "Mashmatrix Sheet": "04t0K000001E4iS"
+  }
 }
