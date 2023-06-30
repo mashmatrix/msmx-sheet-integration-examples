@@ -24,6 +24,8 @@ export default class MessageDebug extends LightningElement {
   @wire(MessageContext)
   messageContext;
 
+  opened = false;
+
   logText = "";
 
   connectedCallback() {
@@ -45,5 +47,9 @@ export default class MessageDebug extends LightningElement {
   handleMessage(channelName, message) {
     this.logText =
       channelName + " => " + JSON.stringify(message, null, 2) + "\n" + this.logText;
+  }
+
+  toggleOpen() {
+    this.opened = !this.opened;
   }
 }

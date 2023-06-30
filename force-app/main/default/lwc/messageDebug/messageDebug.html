@@ -1,7 +1,34 @@
 <template>
-	<lightning-card title="Debug Message Channel">
-		<div class="slds-var-m-around_medium">
-			<lightning-textarea class="msgLogsTextArea" label="Message Logs" value={logText} readonly></lightning-textarea>
-		</div>
-	</lightning-card>
+  <lightning-card title="Debug Message Channel">
+    <div
+      class="slds-var-m-horizontal_medium"
+      style="cursor: pointer"
+      onclick={toggleOpen}
+    >
+      <template lwc:if={opened}>
+        <lightning-button
+					variant="icon-bare"
+          icon-name="utility:chevrondown"
+          size="x-small"
+        ></lightning-button>
+      </template>
+      <template lwc:else>
+        <lightning-button
+					variant="icon-bare"
+          icon-name="utility:chevronright"
+          size="x-small"
+        ></lightning-button>
+      </template>
+      <span>Message Logs</span>
+    </div>
+    <template lwc:if={opened}>
+      <div class="slds-var-m-horizontal_medium">
+        <lightning-textarea
+          class="msgLogsTextArea"
+          value={logText}
+          readonly
+        ></lightning-textarea>
+      </div>
+    </template>
+  </lightning-card>
 </template>
