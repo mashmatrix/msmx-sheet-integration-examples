@@ -5,6 +5,7 @@
 package.xml
 
 **/*.profile-meta.xml
+**/*.appMenu-meta.xml
 
 # LWC configuration files
 **/jsconfig.json

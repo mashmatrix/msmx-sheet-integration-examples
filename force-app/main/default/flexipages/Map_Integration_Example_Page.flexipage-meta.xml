@@ -5,10 +5,11 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>bookId</name>
-                    <value>bid</value>
+                    <value>a01N000000OZ2SwIAL</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>height</name>
+                    <value>80vh</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>publishEvents</name>
@@ -28,10 +29,16 @@
         <type>Region</type>
     </flexiPageRegions>
     <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentName>accountsMap</componentName>
+                <identifier>c_accountsMap</identifier>
+            </componentInstance>
+        </itemInstances>
         <name>column2</name>
         <type>Region</type>
     </flexiPageRegions>
-    <masterLabel>Mashmatrix Sheet Integration Examples Page</masterLabel>
+    <masterLabel>Map Integration Example</masterLabel>
     <template>
         <name>flexipage:appHomeTemplateTwoColumns</name>
     </template>

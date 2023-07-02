@@ -1,0 +1,10 @@
+<template>
+  <lightning-card title="Account List" icon-name="standard:account">
+    <lightning-map
+      map-markers={mapMarkers}
+      selected-marker-value={selectedMarkerValue}
+			list-view="hidden"
+      onmarkerselect={handleMarkerSelect}
+    ></lightning-map>
+  </lightning-card>
+</template>
