@@ -10,4 +10,8 @@
         <tab>Map_Integration</tab>
         <visibility>Visible</visibility>
     </tabSettings>
+    <tabSettings>
+        <tab>Filter_Control_Integration</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
 </PermissionSet>

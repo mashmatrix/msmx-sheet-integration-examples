@@ -1,0 +1,148 @@
+<template>
+  <lightning-card title="Filter Control" icon-name="utility:filter">
+    <div class="slds-var-m-around_medium">
+      <div class="section-container">
+        <div class="section-title slds-text-heading_small">Price Range</div>
+        <div class="section-entry">
+          <lightning-slider
+            label="Min Price"
+            min="0"
+            max="1000000"
+            step="1000"
+            value={priceMin}
+            disabled={priceMinDisabled}
+            onchange={handleChangePriceMin}
+          ></lightning-slider>
+        </div>
+        <div class="section-entry">
+          <lightning-slider
+            label="Max Price"
+            min="0"
+            max="1000000"
+            step="1000"
+            value={priceMax}
+            disabled={priceMaxDisabled}
+            onchange={handleChangePriceMax}
+          ></lightning-slider>
+        </div>
+      </div>
+      <div class="section-container">
+        <div class="section-title slds-text-heading_small">Type of Place</div>
+        <div class="section-entry place-list">
+          <div
+            class="place"
+            data-selected={isEntirePlaceType}
+            onclick={handleClickEntirePlaceType}
+          >
+            <div class="place-type-title">Entire Place</div>
+            <div class="place-type-text">A place all to yourself</div>
+          </div>
+          <div
+            class="place"
+            data-selected={isPrivatePlaceType}
+            onclick={handleClickPrivatePlaceType}
+          >
+            <div class="place-type-title">Private Place</div>
+            <div class="place-type-text">
+              Your own room in a home or a hotel, plus some shared common spaces
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="section-container">
+        <div class="section-title slds-text-heading_small">Rooms and Beds</div>
+        <div class="section-entry">
+          <div class="entry-title">Bedrooms</div>
+          <div class="entry-content count-items">
+            <template for:each={bedroomCountItems} for:item="item">
+              <div
+                key={item.value}
+                class="count-item"
+                data-item-count={item.value}
+                data-selected={item.selected}
+                onclick={handleClickBedroomCount}
+              >
+                {item.label}
+              </div>
+            </template>
+          </div>
+        </div>
+        <div class="section-entry">
+          <div class="entry-title">Beds</div>
+          <div class="entry-content count-items">
+            <template for:each={bedCountItems} for:item="item">
+              <div
+                key={item.value}
+                class="count-item"
+                data-item-count={item.value}
+                data-selected={item.selected}
+                onclick={handleClickBedCount}
+              >
+                {item.label}
+              </div>
+            </template>
+          </div>
+        </div>
+        <div class="section-entry">
+          <div class="entry-title">Bathrooms</div>
+          <div class="entry-content count-items">
+            <template for:each={bathroomCountItems} for:item="item">
+              <div
+                key={item.value}
+                class="count-item"
+                data-item-count={item.value}
+                data-selected={item.selected}
+                onclick={handleClickBathroomCount}
+              >
+                {item.label}
+              </div>
+            </template>
+          </div>
+        </div>
+      </div>
+      <div class="section-container">
+        <div class="section-title slds-text-heading_small">Property Type</div>
+        <div class="section-entry property-list">
+          <template for:each={propertyOptions} for:item="property">
+            <div
+              key={property.value}
+              class="property"
+              data-value={property.value}
+              data-selected={property.selected}
+              onclick={handleClickPropertyType}
+            >
+              <div class="property-type-icon">
+                <lightning-icon icon-name={property.icon}></lightning-icon>
+              </div>
+              <div class="property-type-title">{property.label}</div>
+            </div>
+          </template>
+        </div>
+      </div>
+      <div class="section-container">
+        <div class="section-title slds-text-heading_small">Amenities</div>
+        <div class="section-entry amenity-list">
+          <template for:each={amenityOptions} for:item="amenity">
+            <div
+              key={amenity.value}
+              class="amenity"
+              data-value={amenity.value}
+              data-selected={amenity.selected}
+              onclick={handleClickAmenity}
+            >
+              <div class="amenity-icon">
+                <template lwc:if={amenity.selected}>
+                  <lightning-icon
+                    icon-name="utility:success"
+                    size="small"
+                  ></lightning-icon>
+                </template>
+              </div>
+              <div class="amenity-title">{amenity.label}</div>
+            </div>
+          </template>
+        </div>
+      </div>
+    </div>
+  </lightning-card>
+</template>

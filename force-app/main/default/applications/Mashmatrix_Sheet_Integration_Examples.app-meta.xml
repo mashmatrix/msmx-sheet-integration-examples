@@ -12,5 +12,6 @@
     <label>Mashmatrix Sheet Integration Examples</label>
     <navType>Standard</navType>
     <tabs>Map_Integration</tabs>
+    <tabs>Filter_Control_Integration</tabs>
     <uiType>Lightning</uiType>
 </CustomApplication>
