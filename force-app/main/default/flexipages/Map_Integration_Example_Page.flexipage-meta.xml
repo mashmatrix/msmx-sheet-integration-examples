@@ -5,7 +5,7 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>bookId</name>
-                    <value>a01N000000OZ2SwIAL</value>
+                    <value>a01BK000009rutJYAQ</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>height</name>
@@ -17,9 +17,11 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>sheetId</name>
+                    <value>s1</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>title</name>
+                    <value>Account Search</value>
                 </componentInstanceProperties>
                 <componentName>msmxSheet:Sheet</componentName>
                 <identifier>msmxSheet_Sheet</identifier>
@@ -31,8 +33,41 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
+                <componentInstanceProperties>
+                    <name>bookId</name>
+                    <value>a01BK000009rutJYAQ</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>sheetId</name>
+                    <value>s1</value>
+                </componentInstanceProperties>
                 <componentName>accountsMap</componentName>
                 <identifier>c_accountsMap</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>bookId</name>
+                    <value>a01BK000009rutJYAQ</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>height</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>publishEvents</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>sheetId</name>
+                    <value>s2</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>title</name>
+                    <value>Contacts in Selected Account</value>
+                </componentInstanceProperties>
+                <componentName>msmxSheet:Sheet</componentName>
+                <identifier>msmxSheet_Sheet2</identifier>
             </componentInstance>
         </itemInstances>
         <name>column2</name>

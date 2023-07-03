@@ -1,16 +1,25 @@
-import { LightningElement, wire } from "lwc";
+import { LightningElement, api, wire } from "lwc";
 import {
   subscribe,
   unsubscribe,
-  MessageContext
+  publish,
+  MessageContext,
+  APPLICATION_SCOPE
 } from "lightning/messageService";
 import MC_LOAD_COMPLETE from "@salesforce/messageChannel/msmxSheet__loadComplete__c";
 import MC_SELECT_RECORDS from "@salesforce/messageChannel/msmxSheet__selectRecords__c";
 import MC_FOCUS_CELL from "@salesforce/messageChannel/msmxSheet__focusCell__c";
+import MC_SET_PARAMETERS from "@salesforce/messageChannel/msmxSheet__setParameters__c";
 
 export default class AccountsMap extends LightningElement {
   @wire(MessageContext)
   messageContext;
+
+  @api
+  bookId;
+
+  @api
+  sheetId;
 
   allAccounts = [];
 
@@ -29,21 +38,24 @@ export default class AccountsMap extends LightningElement {
       MC_LOAD_COMPLETE,
       (message) => {
         this.handleSheetLoadComplete(message);
-      }
+      },
+      { scope: APPLICATION_SCOPE }
     );
     this.subscriptions.selectRecords = subscribe(
       this.messageContext,
       MC_SELECT_RECORDS,
       (message) => {
         this.handleSheetSelectRecords(message);
-      }
+      },
+      { scope: APPLICATION_SCOPE }
     );
     this.subscriptions.focusCell = subscribe(
       this.messageContext,
       MC_FOCUS_CELL,
       (message) => {
         this.handleSheetFocusCell(message);
-      }
+      },
+      { scope: APPLICATION_SCOPE }
     );
   }
 
@@ -57,11 +69,18 @@ export default class AccountsMap extends LightningElement {
   }
 
   handleSheetLoadComplete(message) {
+    console.log('messsage=>', message.bookId, message.sheetId);
+    if (this.bookId !== message.bookId || this.sheetId !== message.sheetId) {
+      return;
+    }
     this.allAccounts = message.records;
     this._assignToMapMarkers();
   }
 
   handleSheetSelectRecords(message) {
+    if (this.bookId !== message.bookId || this.sheetId !== message.sheetId) {
+      return;
+    }
     this.selectedAccounts = message.records;
     this._assignToMapMarkers();
   }
@@ -84,9 +103,11 @@ export default class AccountsMap extends LightningElement {
   handleSheetFocusCell(message) {
     const recordId = message.record.Id;
     this.selectedMarkerValue = recordId;
+    publish(this.messageContext, MC_SET_PARAMETERS, { parameters: { accountId: this.selectedMarkerValue }});
   }
 
   handleMarkerSelect(e) {
     this.selectedMarkerValue = e.detail.selectedMarkerValue;
+    publish(this.messageContext, MC_SET_PARAMETERS, { parameters: { accountId: this.selectedMarkerValue }});
   }
 }

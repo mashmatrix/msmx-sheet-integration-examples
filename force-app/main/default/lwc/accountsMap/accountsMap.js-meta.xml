@@ -9,4 +9,10 @@
         <target>lightning__HomePage</target>
         <target>lightning__RecordPage</target>
     </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__AppPage,lightning__HomePage,lightning__RecordPage">
+            <property type="String" name="bookId" label="Target Book ID" default="" ></property>
+            <property type="String" name="sheetId" label="Target Sheet ID" default="" ></property>
+        </targetConfig>
+    </targetConfigs>
 </LightningComponentBundle>
