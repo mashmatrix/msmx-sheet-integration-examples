@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Amenities__c</fullName>
+    <externalId>false</externalId>
+    <label>Amenities</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Wi-Fi</fullName>
+                <default>false</default>
+                <label>Wi-Fi</label>
+            </value>
+            <value>
+                <fullName>Washer</fullName>
+                <default>false</default>
+                <label>Washer</label>
+            </value>
+            <value>
+                <fullName>Air Conditioner</fullName>
+                <default>false</default>
+                <label>Air Conditioner</label>
+            </value>
+            <value>
+                <fullName>Kitchen</fullName>
+                <default>false</default>
+                <label>Kitchen</label>
+            </value>
+            <value>
+                <fullName>Dryer</fullName>
+                <default>false</default>
+                <label>Dryer</label>
+            </value>
+            <value>
+                <fullName>Heating</fullName>
+                <default>false</default>
+                <label>Heating</label>
+            </value>
+            <value>
+                <fullName>Dedicated Workspace</fullName>
+                <default>false</default>
+                <label>Dedicated Workspace</label>
+            </value>
+            <value>
+                <fullName>TV</fullName>
+                <default>false</default>
+                <label>TV</label>
+            </value>
+            <value>
+                <fullName>Iron</fullName>
+                <default>false</default>
+                <label>Iron</label>
+            </value>
+            <value>
+                <fullName>Private Pool</fullName>
+                <default>false</default>
+                <label>Private Pool</label>
+            </value>
+            <value>
+                <fullName>Balcony</fullName>
+                <default>false</default>
+                <label>Balcony</label>
+            </value>
+            <value>
+                <fullName>Spa</fullName>
+                <default>false</default>
+                <label>Spa</label>
+            </value>
+            <value>
+                <fullName>Sauna</fullName>
+                <default>false</default>
+                <label>Sauna</label>
+            </value>
+            <value>
+                <fullName>Cinema Room</fullName>
+                <default>false</default>
+                <label>Cinema Room</label>
+            </value>
+            <value>
+                <fullName>Kitchenette</fullName>
+                <default>false</default>
+                <label>Kitchenette</label>
+            </value>
+            <value>
+                <fullName>Private Beach</fullName>
+                <default>false</default>
+                <label>Private Beach</label>
+            </value>
+            <value>
+                <fullName>Tennis Court</fullName>
+                <default>false</default>
+                <label>Tennis Court</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>
