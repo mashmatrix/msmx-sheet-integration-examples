@@ -1,5 +1,6 @@
 import { LightningElement, wire } from "lwc";
 import {
+  APPLICATION_SCOPE,
   MessageContext,
   subscribe,
   unsubscribe
@@ -7,6 +8,7 @@ import {
 import MC_SELECT_RECORDS from "@salesforce/messageChannel/msmxSheet__selectRecords__c";
 import MC_FOCUS_CELL from "@salesforce/messageChannel/msmxSheet__focusCell__c";
 import MC_LOAD_COMPLETE from "@salesforce/messageChannel/msmxSheet__loadComplete__c";
+import MC_SET_PARAMETERS from "@salesforce/messageChannel/msmxSheet__setParameters__c";
 
 /**
  *
@@ -14,7 +16,8 @@ import MC_LOAD_COMPLETE from "@salesforce/messageChannel/msmxSheet__loadComplete
 const msgChannels = {
   selectRecords: MC_SELECT_RECORDS,
   focusCell: MC_FOCUS_CELL,
-  loadComplete: MC_LOAD_COMPLETE
+  loadComplete: MC_LOAD_COMPLETE,
+  setParameters: MC_SET_PARAMETERS
 };
 
 /**
@@ -30,9 +33,14 @@ export default class MessageDebug extends LightningElement {
 
   connectedCallback() {
     this.subscriptions = Object.keys(msgChannels).map((channelName) =>
-      subscribe(this.messageContext, msgChannels[channelName], (message) => {
-        this.handleMessage(channelName, message);
-      })
+      subscribe(
+        this.messageContext,
+        msgChannels[channelName],
+        (message) => {
+          this.handleMessage(channelName, message);
+        },
+        { scope: APPLICATION_SCOPE }
+      )
     );
   }
 
@@ -46,7 +54,11 @@ export default class MessageDebug extends LightningElement {
 
   handleMessage(channelName, message) {
     this.logText =
-      channelName + " => " + JSON.stringify(message, null, 2) + "\n" + this.logText;
+      channelName +
+      " => " +
+      JSON.stringify(message, null, 2) +
+      "\n" +
+      this.logText;
   }
 
   toggleOpen() {
