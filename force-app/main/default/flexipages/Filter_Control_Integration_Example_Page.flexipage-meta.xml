@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <FlexiPage xmlns="http://soap.sforce.com/2006/04/metadata">
     <flexiPageRegions>
+        <name>region1</name>
+        <type>Region</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
         <itemInstances>
             <componentInstance>
                 <componentName>filterControl</componentName>
                 <identifier>c_filterControl</identifier>
             </componentInstance>
         </itemInstances>
-        <name>column1</name>
+        <name>region2</name>
         <type>Region</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -15,11 +19,11 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>bookId</name>
-                    <value>a01N000000OZ2SwIAL</value>
+                    <value>a01BK000009rpvPYAQ</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>height</name>
-                    <value>80vh</value>
+                    <value>70vh</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>publishEvents</name>
@@ -27,20 +31,22 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>sheetId</name>
+                    <value>s1</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>title</name>
+                    <value>Accommodations Result</value>
                 </componentInstanceProperties>
                 <componentName>msmxSheet:Sheet</componentName>
                 <identifier>msmxSheet_Sheet</identifier>
             </componentInstance>
         </itemInstances>
-        <name>column2</name>
+        <name>region3</name>
         <type>Region</type>
     </flexiPageRegions>
     <masterLabel>Filter Control Integration Example</masterLabel>
     <template>
-        <name>flexipage:appHomeTemplateTwoColumns</name>
+        <name>flexipage:appHomeTemplateHeaderTwoColumnsLeftSidebar</name>
     </template>
     <type>AppPage</type>
 </FlexiPage>

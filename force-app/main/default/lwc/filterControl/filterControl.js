@@ -1,20 +1,26 @@
-import { LightningElement } from "lwc";
+import { LightningElement, wire } from "lwc";
+import { MessageContext, publish } from "lightning/messageService";
+import MC_SET_PARAMETERS from "@salesforce/messageChannel/msmxSheet__setParameters__c";
 
 export default class FilterControl extends LightningElement {
-  priceMin = null;
-  priceMax = null;
-  placeType = null;
-  bedroomCount = null;
-  bedCount = null;
-  bathroomCount = null;
-  propertyTypes = ['house', 'apartment', 'guesthouse', 'hotel'];
-	amenities = [];
+  @wire(MessageContext)
+  messageContext;
+
+  priceMin = undefined;
+  priceMax = undefined 
+	privatePlace = undefined;
+  bedroomCount = undefined;
+  bedCount = undefined;
+  bathroomCount = undefined;
+  propertyTypes = ["house", "apartment", "guesthouse", "hotel"];
+  amenities = [];
 
   handleChangePriceMin(event) {
     this.priceMin = Number(event.target.value);
     if (this.priceMax != null && this.priceMax < this.priceMin) {
       this.priceMax = this.priceMin;
     }
+    this._fireParameterChangeEvent();
   }
 
   handleChangePriceMax(event) {
@@ -22,22 +28,25 @@ export default class FilterControl extends LightningElement {
     if (this.priceMin != null && this.priceMin > this.priceMax) {
       this.priceMin = this.priceMax;
     }
+    this._fireParameterChangeEvent();
   }
 
   get isEntirePlaceType() {
-    return this.placeType == null;
+    return this.privatePlace == null;
   }
 
   get isPrivatePlaceType() {
-    return this.placeType === "private";
+    return this.privatePlace === true;
   }
 
   handleClickEntirePlaceType() {
-    this.placeType = null;
+		this.privatePlace = undefined;
+    this._fireParameterChangeEvent();
   }
 
   handleClickPrivatePlaceType() {
-    this.placeType = "private";
+		this.privatePlace = true;
+    this._fireParameterChangeEvent();
   }
 
   _createCountItems(count) {
@@ -67,16 +76,19 @@ export default class FilterControl extends LightningElement {
   handleClickBedroomCount(event) {
     const itemCount = event.target.dataset.itemCount;
     this.bedroomCount = itemCount == null ? null : Number(itemCount);
+    this._fireParameterChangeEvent();
   }
 
   handleClickBedCount(event) {
     const itemCount = event.target.dataset.itemCount;
     this.bedCount = itemCount == null ? null : Number(itemCount);
+    this._fireParameterChangeEvent();
   }
 
   handleClickBathroomCount(event) {
     const itemCount = event.target.dataset.itemCount;
     this.bathroomCount = itemCount == null ? null : Number(itemCount);
+    this._fireParameterChangeEvent();
   }
 
   _propertyOptions = [
@@ -102,36 +114,50 @@ export default class FilterControl extends LightningElement {
     } else {
       this.propertyTypes = [...this.propertyTypes, propertyType];
     }
+    this._fireParameterChangeEvent();
   }
 
-	_amenityOptions = [
-		{ label: 'Wi-Fi', value: 'Wi-Fi' },
-		{ label: 'Washer', value: 'Washer' },
-		{ label: 'Air Conditioner', value: 'Air Conditioner' },
-		{ label: 'Kitchen', value: 'Kitchen' },
-		{ label: 'Dryer', value: 'Dryer' },
-		{ label: 'Heating', value: 'Heating' },
-		{ label: 'Dedicated Workspace', value: 'Dedicated Workspace' },
-		{ label: 'TV', value: 'TV' },
-		{ label: 'Iron', value: 'Iron' },
-	];
+  _amenityOptions = [
+    { label: "Wi-Fi", value: "Wi-Fi" },
+    { label: "Washer", value: "Washer" },
+    { label: "Air Conditioner", value: "Air Conditioner" },
+    { label: "Kitchen", value: "Kitchen" },
+    { label: "Dryer", value: "Dryer" },
+    { label: "Heating", value: "Heating" },
+    { label: "Dedicated Workspace", value: "Dedicated Workspace" },
+    { label: "TV", value: "TV" },
+    { label: "Iron", value: "Iron" }
+  ];
 
-	get amenityOptions() {
+  get amenityOptions() {
     return this._amenityOptions.map((option) => ({
       ...option,
       selected: this.amenities.includes(option.value)
     }));
   }
 
-	handleClickAmenity(event) {
+  handleClickAmenity(event) {
     const amenity = event.currentTarget.dataset.value;
     if (this.amenities.includes(amenity)) {
-      this.amenities = this.amenities.filter(
-        (am) => am !== amenity
-      );
+      this.amenities = this.amenities.filter((am) => am !== amenity);
     } else {
       this.amenities = [...this.amenities, amenity];
     }
-	}
+    this._fireParameterChangeEvent();
+  }
 
+  _fireParameterChangeEvent() {
+    const parameters = {
+      priceMin: this.priceMin,
+      priceMax: this.priceMax,
+			privatePlace: this.privatePlace,
+      bedroomCount: this.bedroomCount,
+      bedCount: this.bedCount,
+      bathroomCount: this.bathroomCount,
+      propertyTypes: this.propertyTypes,
+      amenities: this.amenities.length > 0 ? this.amenities : undefined 
+    };
+    console.log(JSON.stringify(parameters));
+    publish(this.messageContext, MC_SET_PARAMETERS, { parameters });
+  }
 }
