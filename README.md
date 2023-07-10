@@ -64,4 +64,4 @@ $ sfdx force:org:open -u msmx-sheet-integration -p /lightning/n/msmxSheet__Mashm
 
 12. On "Filter Control Integration" tab, open "Edit Page" from right top menu.
 
-13. Select "Accommodations Result" component, repleade "Book ID" value to the copied book Id of "Accomodation" book in step 8.
+13. Select "Accommodations Result" component, replace "Book ID" value to the copied book Id of "Accomodation" book in step 8.
