@@ -1,7 +1,8 @@
-import { LightningElement, wire } from "lwc";
+import { LightningElement } from "lwc";
 import {
   APPLICATION_SCOPE,
-  MessageContext,
+  createMessageContext,
+  releaseMessageContext,
   subscribe,
   unsubscribe
 } from "lightning/messageService";
@@ -24,14 +25,16 @@ const msgChannels = {
  *
  */
 export default class MessageDebug extends LightningElement {
-  @wire(MessageContext)
   messageContext;
 
   opened = false;
 
   logText = "";
 
+  subscriptions = null;
+
   connectedCallback() {
+    this.messageContext = createMessageContext();
     this.subscriptions = Object.keys(msgChannels).map((channelName) =>
       subscribe(
         this.messageContext,
@@ -49,6 +52,10 @@ export default class MessageDebug extends LightningElement {
       for (const subscription of this.subscriptions) {
         unsubscribe(subscription);
       }
+    }
+    if (this.messageContext) {
+      releaseMessageContext(this.messageContext);
+      this.messageContext = null;
     }
   }
 

@@ -1,11 +1,9 @@
-import { LightningElement, wire } from "lwc";
-import { MessageContext, publish } from "lightning/messageService";
+import { LightningElement } from "lwc";
+import { createMessageContext, releaseMessageContext, publish } from "lightning/messageService";
 import MC_SET_PARAMETERS from "@salesforce/messageChannel/msmxSheet__setParameters__c";
 
 export default class FilterControl extends LightningElement {
-  @wire(MessageContext)
   messageContext;
-
   priceMin = undefined;
   priceMax = undefined 
 	privatePlace = undefined;
@@ -14,6 +12,17 @@ export default class FilterControl extends LightningElement {
   bathroomCount = undefined;
   propertyTypes = ["house", "apartment", "guesthouse", "hotel"];
   amenities = [];
+
+  connectedCallback() {
+    this.messageContext = createMessageContext();
+  }
+
+  disconnectedCallback() {
+    if (this.messageContext) {
+      releaseMessageContext(this.messageContext);
+      this.messageContext = null;
+    }
+  }
 
   handleChangePriceMin(event) {
     this.priceMin = Number(event.target.value);
