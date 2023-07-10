@@ -58,8 +58,10 @@ $ sfdx force:org:open -u msmx-sheet-integration -p /lightning/n/msmxSheet__Mashm
 
 9. Open "Mashmatrix Sheet Integration Examples" App from app launcher.
 
-10. On "Map Integration" tab, open "Edit Page" from right menu.
+10. On "Map Integration" tab, open "Edit Page" from right top menu.
 
-11. Select "Account Search" component, replace "Book ID" value to the copied book Id in step 8. Also replace the book ID for the "Contact in Selected Account" component.
+11. Select "Account Search" component, replace "Book ID" value to the copied book Id of "Account/Contact" book in step 8. So to "Account Map" and "Contact in Selected Account" components.
 
-12.
+12. On "Filter Control Integration" tab, open "Edit Page" from right top menu.
+
+13. Select "Accommodations Result" component, repleade "Book ID" value to the copied book Id of "Accomodation" book in step 8.
