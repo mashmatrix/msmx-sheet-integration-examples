@@ -48,7 +48,7 @@ $ sfdx automig:load --inputdir data/records -u msmx-sheet-integration
 $ sfdx automig:load --inputdir data/books -u msmx-sheet-integration
 ```
 
-7. Open Mashmatris Sheet to confirm the loaded books/records are accessible.
+7. Open Mashmatrix Sheet to confirm the loaded books/records are accessible.
 
 ```sh
 $ sfdx force:org:open -u msmx-sheet-integration -p /lightning/n/msmxSheet__MashmatrixSheet
