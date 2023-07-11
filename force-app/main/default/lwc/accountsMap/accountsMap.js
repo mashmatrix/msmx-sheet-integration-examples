@@ -74,7 +74,6 @@ export default class AccountsMap extends LightningElement {
   }
 
   handleSheetLoadComplete(message) {
-    console.log("messsage=>", message.bookId, message.sheetId);
     if (this.bookId !== message.bookId || this.sheetId !== message.sheetId) {
       return;
     }

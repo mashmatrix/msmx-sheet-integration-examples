@@ -1,12 +1,16 @@
 import { LightningElement } from "lwc";
-import { createMessageContext, releaseMessageContext, publish } from "lightning/messageService";
+import {
+  createMessageContext,
+  releaseMessageContext,
+  publish
+} from "lightning/messageService";
 import MC_SET_PARAMETERS from "@salesforce/messageChannel/msmxSheet__setParameters__c";
 
 export default class FilterControl extends LightningElement {
   messageContext;
   priceMin = undefined;
-  priceMax = undefined 
-	privatePlace = undefined;
+  priceMax = undefined;
+  privatePlace = undefined;
   bedroomCount = undefined;
   bedCount = undefined;
   bathroomCount = undefined;
@@ -49,12 +53,12 @@ export default class FilterControl extends LightningElement {
   }
 
   handleClickEntirePlaceType() {
-		this.privatePlace = undefined;
+    this.privatePlace = undefined;
     this._fireParameterChangeEvent();
   }
 
   handleClickPrivatePlaceType() {
-		this.privatePlace = true;
+    this.privatePlace = true;
     this._fireParameterChangeEvent();
   }
 
@@ -159,14 +163,13 @@ export default class FilterControl extends LightningElement {
     const parameters = {
       priceMin: this.priceMin,
       priceMax: this.priceMax,
-			privatePlace: this.privatePlace,
+      privatePlace: this.privatePlace,
       bedroomCount: this.bedroomCount,
       bedCount: this.bedCount,
       bathroomCount: this.bathroomCount,
       propertyTypes: this.propertyTypes,
-      amenities: this.amenities.length > 0 ? this.amenities : undefined 
+      amenities: this.amenities.length > 0 ? this.amenities : undefined
     };
-    console.log(JSON.stringify(parameters));
     publish(this.messageContext, MC_SET_PARAMETERS, { parameters });
   }
 }
