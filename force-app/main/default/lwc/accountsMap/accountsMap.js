@@ -109,6 +109,9 @@ export default class AccountsMap extends LightningElement {
   }
 
   handleSheetFocusCell(message) {
+    if (this.bookId !== message.bookId || this.sheetId !== message.sheetId) {
+      return;
+    }
     const recordId = message.record.Id;
     this.selectedMarkerValue = recordId;
     publish(this.messageContext, MC_SET_PARAMETERS, {
