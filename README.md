@@ -4,8 +4,8 @@ This project is intended to show the possibilities of [Mashmatrix Sheet](https:/
 
 There are examples that uses following APIs:
 
-- [Message Channel API](https://docs.mashmatrix.com/)
-- [Platform Event API](https://docs.mashmatrix.com/) (coming soon)
+- [Message Channel API](https://docs.mashmatrix.com/mashmatrix-sheet/)
+- [Platform Event API](https://docs.mashmatrix.com/mashmatrix-sheet/) (coming soon)
 
 ## Setup
 
