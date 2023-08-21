@@ -20,6 +20,7 @@
   "sourceApiVersion": "57.0",
   "packageAliases": {
     "msmx-sheet-integration-examples": "0HoA70000000006KAA",
-    "Mashmatrix Sheet": "04t0K000001E4iS"
+    "Mashmatrix Sheet": "04t0K000001E4iS",
+    "msmx-sheet-integration-examples@0.2.0-1": "04tA70000000Ue7IAE"
   }
 }

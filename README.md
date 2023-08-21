@@ -4,8 +4,8 @@ This project is intended to show the possibilities of [Mashmatrix Sheet](https:/
 
 There are examples that uses following APIs:
 
-- [Message Channel API](https://docs.mashmatrix.com/mashmatrix-sheet/)
-- [Platform Event API](https://docs.mashmatrix.com/mashmatrix-sheet/) (coming soon)
+- Message Channel API (en | [ja](https://docs.mashmatrix.com/mashmatrix-sheet/v/ja/customization/developing_apps_using_message_channel_api))
+- Platform Event API (en | [ja](https://docs.mashmatrix.com/mashmatrix-sheet/v/ja/customization/capturing_user_ops_using_platform_event_api))
 
 ## Setup
 
@@ -18,7 +18,7 @@ $ sfdx force:org:create -f config/project-scratch-def.json -a msmx-sheet-integra
 2. Install Mashmatrix Sheet trial package from command line.
 
 ```sh
-$ sfdx force:package:install --package 04t0K000001E4iS -u msmx-sheet-integration
+$ sfdx force:package:install --package 04t0K000001E4ll -u msmx-sheet-integration -w 10
 ```
 
 3. Assign required permission sets to the scratch org's default user.

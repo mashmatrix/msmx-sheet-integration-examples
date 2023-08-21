@@ -2,7 +2,7 @@
 
 sfdx force:org:create -f config/project-scratch-def.json -a msmx-sheet-integration -w 10
 
-sfdx force:package:install --package 04t0K000001E4iS -u msmx-sheet-integration
+sfdx force:package:install --package 04t0K000001E4ll -u msmx-sheet-integration -w 10
 sfdx force:user:permset:assign --permsetname msmxSheet__MashmatrixSheetUser -u msmx-sheet-integration
 sfdx force:user:permset:assign --permsetname msmxSheet__MashmatrixSheetAdministrator -u msmx-sheet-integration
 
