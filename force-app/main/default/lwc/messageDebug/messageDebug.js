@@ -10,15 +10,17 @@ import MC_SELECT_RECORDS from "@salesforce/messageChannel/msmxSheet__selectRecor
 import MC_FOCUS_CELL from "@salesforce/messageChannel/msmxSheet__focusCell__c";
 import MC_LOAD_COMPLETE from "@salesforce/messageChannel/msmxSheet__loadComplete__c";
 import MC_SET_PARAMETERS from "@salesforce/messageChannel/msmxSheet__setParameters__c";
+import MC_EXECUTE_COMMAND from "@salesforce/messageChannel/msmxSheet__executeCommand__c";
 
 /**
  *
  */
-const msgChannels = {
+const MESSAGE_CHANNELS = {
   selectRecords: MC_SELECT_RECORDS,
   focusCell: MC_FOCUS_CELL,
   loadComplete: MC_LOAD_COMPLETE,
-  setParameters: MC_SET_PARAMETERS
+  setParameters: MC_SET_PARAMETERS,
+  executeCommand: MC_EXECUTE_COMMAND
 };
 
 /**
@@ -27,30 +29,37 @@ const msgChannels = {
 export default class MessageDebug extends LightningElement {
   messageContext;
 
-  opened = false;
+  messagePanelOpened = false;
 
-  logText = "";
+  messages = [];
 
   subscriptions = null;
 
+  get messageLogsEmpty() {
+    return this.messages.length === 0;
+  }
+
   connectedCallback() {
     this.messageContext = createMessageContext();
-    this.subscriptions = Object.keys(msgChannels).map((channelName) =>
-      subscribe(
+    this.subscriptions = Object.keys(MESSAGE_CHANNELS).map((channelName) => {
+      const subscr = subscribe(
         this.messageContext,
-        msgChannels[channelName],
+        MESSAGE_CHANNELS[channelName],
         (message) => {
-          this.handleMessage(channelName, message);
+          this.handleIncomingMessage("message-channel", channelName, message);
         },
         { scope: APPLICATION_SCOPE }
-      )
-    );
+      );
+      return {
+        unsubscribe: () => unsubscribe(subscr)
+      };
+    });
   }
 
   disconnectedCallback() {
     if (this.subscriptions) {
-      for (const subscription of this.subscriptions) {
-        unsubscribe(subscription);
+      for (const subscr of this.subscriptions) {
+        subscr.unsubscribe();
       }
     }
     if (this.messageContext) {
@@ -59,16 +68,41 @@ export default class MessageDebug extends LightningElement {
     }
   }
 
-  handleMessage(channelName, message) {
-    this.logText =
-      channelName +
-      " => " +
-      JSON.stringify(message, null, 2) +
-      "\n" +
-      this.logText;
+  handleIncomingMessage(messageType, channelName, message) {
+    const messageId =
+      String(Date.now()) + "_" + Math.random().toString(36).substring(2);
+    this.messages = [
+      {
+        id: messageId,
+        messageClass: `message ${messageType}`,
+        channelName: channelName,
+        raw: message,
+        text: JSON.stringify(message, null, 2),
+        componentId: message.componentId,
+        bookId: message.bookId,
+        sheetId: message.sheetId,
+        timestamp: new Date().toLocaleTimeString(),
+        opened: false
+      },
+      ...this.messages
+    ];
   }
 
-  toggleOpen() {
-    this.opened = !this.opened;
+  handleMessageToggle(event) {
+    const messageId = event.currentTarget.dataset.messageId;
+    console.log(event.currentTarget.dataset, event.detail);
+    const message = this.messages.find((m) => m.id === messageId);
+    if (message) {
+      message.opened = !message.opened;
+      this.messages = [...this.messages];
+    }
+  }
+
+  handleClearMessageLogs() {
+    this.messages = [];
+  }
+
+  toggleOpenMessagePanel() {
+    this.messagePanelOpened = !this.messagePanelOpened;
   }
 }

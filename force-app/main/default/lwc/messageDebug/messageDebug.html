@@ -1,34 +1,81 @@
 <template>
   <lightning-card title="Debug Message Channel">
-    <div
-      class="slds-var-m-horizontal_medium"
-      style="cursor: pointer"
-      onclick={toggleOpen}
-    >
-      <template lwc:if={opened}>
-        <lightning-button
-					variant="icon-bare"
-          icon-name="utility:chevrondown"
-          size="x-small"
-        ></lightning-button>
-      </template>
-      <template lwc:else>
-        <lightning-button
-					variant="icon-bare"
-          icon-name="utility:chevronright"
-          size="x-small"
-        ></lightning-button>
-      </template>
-      <span>Message Logs</span>
-    </div>
-    <template lwc:if={opened}>
-      <div class="slds-var-m-horizontal_medium">
-        <lightning-textarea
-          class="msgLogsTextArea"
-          value={logText}
-          readonly
-        ></lightning-textarea>
+    <div class="slds-var-m-horizontal_medium message-debug-control">
+      <div class="message-panel-toggle" onclick={toggleOpenMessagePanel}>
+        <template lwc:if={messagePanelOpened}>
+          <lightning-button
+            variant="base"
+            icon-name="utility:chevrondown"
+            size="x-small"
+          ></lightning-button>
+        </template>
+        <template lwc:else>
+          <lightning-button
+            variant="base"
+            icon-name="utility:chevronright"
+            size="x-small"
+          ></lightning-button>
+        </template>
+        <span>Message Logs ({messages.length})</span>
       </div>
+      <div class="message-debug-control-actions">
+        <lightning-button
+          variant="base"
+          icon-name="utility:delete"
+          size="x-small"
+          title="Clear Message Logs"
+          disabled={messageLogsEmpty}
+          onclick={handleClearMessageLogs}
+        ></lightning-button>
+      </div>
+    </div>
+    <template lwc:if={messagePanelOpened}>
+      <ul class="slds-var-m-horizontal_medium message-list">
+        <template for:each={messages} for:item="message" for:index="index">
+          <li key={message.id}>
+            <div
+              class={message.messageClass}
+              data-message-id={message.id}
+              onclick={handleMessageToggle}
+            >
+              <template lwc:if={message.opened}>
+                <lightning-button
+                  variant="base"
+                  icon-name="utility:chevrondown"
+                  size="x-small"
+                ></lightning-button>
+              </template>
+              <template lwc:else>
+                <lightning-button
+                  variant="base"
+                  icon-name="utility:chevronright"
+                  size="x-small"
+                ></lightning-button>
+              </template>
+              <span class="timestamp">{message.timestamp}</span>
+              <strong class="channel-name">{message.channelName}</strong>
+              <template lwc:if={message.componentId}>
+                <span class="property">componentId={message.componentId}</span>
+              </template>
+              <template lwc:if={message.bookId}>
+                <span class="property">bookId={message.bookId}</span>
+              </template>
+              <template lwc:if={message.sheetId}>
+                <span class="property">sheetId={message.sheetId}</span>
+              </template>
+            </div>
+            <template lwc:if={message.opened}>
+              <div class="message-content">
+                <lightning-textarea
+                  class="message-textarea"
+                  value={message.text}
+                  readonly
+                ></lightning-textarea>
+              </div>
+            </template>
+          </li>
+        </template>
+      </ul>
     </template>
   </lightning-card>
 </template>

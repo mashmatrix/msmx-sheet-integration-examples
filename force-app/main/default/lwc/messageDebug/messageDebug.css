@@ -1,3 +1,43 @@
-.msgLogsTextArea {
-	--sds-c-textarea-sizing-min-height: 500px
+.message-debug-control {
+  display: flex;
+}
+
+.message-panel-toggle {
+  flex-grow: 1;
+  cursor: pointer;
+}
+
+.message-debug-control-actions {
+  flex-grow: 0;
+}
+
+.message-list {
+  max-height: 400px;
+  overflow: auto;
+}
+
+.message {
+  background-color: #f3f3f3;
+  border: 1px solid #d8dde6;
+  border-radius: 0.25rem;
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+}
+
+.message .channel-name {
+  font-weight: bold;
+}
+
+.message span,
+.message strong {
+  margin-right: 0.5rem;
+}
+
+.message-content {
+  margin-top: -1.5rem;
+}
+
+.message-textarea {
+  --sds-c-textarea-sizing-min-height: 200px;
 }
