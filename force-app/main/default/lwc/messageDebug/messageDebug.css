@@ -17,12 +17,19 @@
 }
 
 .message {
-  background-color: #f3f3f3;
   border: 1px solid #d8dde6;
   border-radius: 0.25rem;
   padding: 0.5rem 0.75rem;
   margin-bottom: 0.5rem;
   cursor: pointer;
+}
+
+.message.message-channel {
+  background-color: #f3f3f3;
+}
+
+.message.platform-event {
+  background-color: #c2c2f3;
 }
 
 .message .channel-name {

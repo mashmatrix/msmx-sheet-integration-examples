@@ -3,7 +3,7 @@
     <apiVersion>57.0</apiVersion>
     <isExposed>true</isExposed>
     <masterLabel>Message Debug</masterLabel>
-    <description>Debug messages published in channels of Mashmatrix Sheet</description>
+    <description>Debug messages published in message channels / platform events of Mashmatrix Sheet</description>
     <targets>
         <target>lightning__AppPage</target>
         <target>lightning__HomePage</target>
