@@ -13,5 +13,6 @@
     <navType>Standard</navType>
     <tabs>Map_Integration</tabs>
     <tabs>Filter_Control_Integration</tabs>
+    <tabs>Message_Debug</tabs>
     <uiType>Lightning</uiType>
 </CustomApplication>

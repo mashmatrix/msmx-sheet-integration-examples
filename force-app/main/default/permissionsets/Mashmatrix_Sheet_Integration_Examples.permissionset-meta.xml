@@ -68,4 +68,8 @@
         <tab>Map_Integration</tab>
         <visibility>Visible</visibility>
     </tabSettings>
+    <tabSettings>
+        <tab>Message_Debug</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
 </PermissionSet>
