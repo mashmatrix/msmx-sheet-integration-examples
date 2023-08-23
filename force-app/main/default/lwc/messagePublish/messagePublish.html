@@ -1,0 +1,33 @@
+<template>
+  <lightning-card title="Publish Messages">
+    <div class="slds-var-m-horizontal_medium message-publish-content">
+      <div class="slds-grid slds-gutters">
+        <lightning-combobox
+          class="slds-col"
+          label="Message Channel to Publish"
+          value={messageChannelName}
+          options={messageChannelOptions}
+          onchange={handleSelectMessageChannel}
+        ></lightning-combobox>
+        <lightning-combobox
+          class="slds-col"
+          label="Template"
+          value={messageTemplateId}
+          options={messageTemplateOptions}
+          onchange={handleSelectMessageTemplate}
+        ></lightning-combobox>
+      </div>
+      <lightning-textarea
+        label="Message to Publish"
+        class="message-payload"
+        value={messagePayload}
+				onchange={handleChangeMessagePayload}
+      ></lightning-textarea>
+      <lightning-button
+        variant="brand"
+        label="Publish"
+        onclick={handlePublishMessage}
+      ></lightning-button>
+    </div>
+  </lightning-card>
+</template>
