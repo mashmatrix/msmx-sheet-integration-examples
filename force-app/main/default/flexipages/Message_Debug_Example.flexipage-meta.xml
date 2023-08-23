@@ -39,6 +39,12 @@
                 <identifier>c_messageDebug</identifier>
             </componentInstance>
         </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentName>messagePublish</componentName>
+                <identifier>c_messagePublish</identifier>
+            </componentInstance>
+        </itemInstances>
         <name>column2</name>
         <type>Region</type>
     </flexiPageRegions>
