@@ -81,11 +81,26 @@ $ sfdx force:org:open -u msmx-sheet-integration -p /lightning/n/msmxSheet__Mashm
 
 <img width="2051" alt="map-integration-screen" src="https://github.com/mashmatrix/msmx-sheet-integration-examples/assets/23387/96a7f1f6-f69c-49f6-b39a-e1cd3e684766">
 
+On "Map Integration" tab, there are two Mashmatrix Sheet components and one custom map component in the page.
+The "Account Search" sheet component located in left pane queries account records in the organization, filtering by state or account type.
+The map component receives message of `loadComplete` with the searched result, then plots them on the map.
+If the user clicks a plotted account entry, it publishes `setParameter` message with its account ID.
+The "Contacts in Selected Account" sheet component, located in the right-bottom of the page, is referring the accountId parameter in its filter,
+so it will list all contact records belonging to selected account.
+
 ### Filter Condition Integration
 
 <img width="2055" alt="filter-control-integration-screen" src="https://github.com/mashmatrix/msmx-sheet-integration-examples/assets/23387/03a43eb9-b823-405f-83ee-5bfccc3077a2">
+
+On "Filter Condition Integration" tab, there are two components in the page.
+One is the custom control component, which publishes `setParameter` message according to the control input by the user.
+Another is a Mashmatrix Sheet component that lists accomodations data in the org, which references parameter valueｓ in its filters.
+By changing the control input in the control component, the sheet component will be automatically refreshed to list the records matching with the inputted conditions.
 
 ### Message Debug
 
 <img width="2055" alt="message-debug-screen" src="https://github.com/mashmatrix/msmx-sheet-integration-examples/assets/23387/b06a2dc3-78b7-4026-b590-fa70c93e4e34">
 
+On "Message Debug" tab, it shows one sheet component and two custom components.
+The "Debug Messages" component lists all messages published to message channels, and events published to platform events of Mashmatrix Sheet in real time.
+The "Publish Messages" component can create raw messages to publish to message channels by specifying message payload in JSON in the textarea.
