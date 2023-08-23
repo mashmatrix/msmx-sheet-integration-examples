@@ -19,14 +19,27 @@
         <span>Message Logs ({messages.length})</span>
       </div>
       <div class="message-debug-control-actions">
-        <lightning-button
-          variant="base"
+        <lightning-button-icon-stateful
+          alternative-text="Show/Hide Messages from Message Channel"
+          icon-name="utility:app_web_messaging"
+          size="x-small"
+          onclick={handleShowMessageChanelToggle}
+          selected={showMessageChannel}
+        ></lightning-button-icon-stateful>
+        <lightning-button-icon-stateful
+          alternative-text="Show/Hide Messages from Platform Event"
+          icon-name="utility:events"
+          size="x-small"
+          onclick={handleShowPlatformEventToggle}
+          selected={showPlatformEvent}
+        ></lightning-button-icon-stateful>
+        <lightning-button-icon-stateful
+          alternative-text="Clear Message Logs"
           icon-name="utility:delete"
           size="x-small"
-          title="Clear Message Logs"
           disabled={messageLogsEmpty}
           onclick={handleClearMessageLogs}
-        ></lightning-button>
+        ></lightning-button-icon-stateful>
       </div>
     </div>
     <template lwc:if={messagePanelOpened}>

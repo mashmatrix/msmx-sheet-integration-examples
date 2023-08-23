@@ -9,6 +9,9 @@
 
 .message-debug-control-actions {
   flex-grow: 0;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
 }
 
 .message-list {

@@ -43,12 +43,20 @@ export default class MessageDebug extends LightningElement {
 
   messagePanelOpened = false;
 
-  messages = [];
+  showMessageChannel = true;
+
+  showPlatformEvent = true;
+
+  messages_ = [];
 
   subscriptions = [];
 
+  get messages() {
+    return this.messages_.filter((m) => (m.messageType === "message-channel" ? this.showMessageChannel : this.showPlatformEvent));
+  }
+
   get messageLogsEmpty() {
-    return this.messages.length === 0;
+    return this.messages_.length === 0;
   }
 
   connectedCallback() {
@@ -122,7 +130,7 @@ export default class MessageDebug extends LightningElement {
   handleIncomingMessage(messageType, channelName, message) {
     const messageId =
       String(Date.now()) + "_" + Math.random().toString(36).substring(2);
-    this.messages = [
+    this.messages_ = [
       {
         id: messageId,
         messageType,
@@ -136,21 +144,29 @@ export default class MessageDebug extends LightningElement {
         timestamp: new Date().toLocaleTimeString(),
         opened: false
       },
-      ...this.messages
+      ...this.messages_
     ];
   }
 
   handleMessageToggle(event) {
     const messageId = event.currentTarget.dataset.messageId;
-    const message = this.messages.find((m) => m.id === messageId);
+    const message = this.messages_.find((m) => m.id === messageId);
     if (message) {
       message.opened = !message.opened;
-      this.messages = [...this.messages];
+      this.messages_ = [...this.messages_];
     }
   }
 
+  handleShowMessageChanelToggle() {
+    this.showMessageChannel = !this.showMessageChannel;
+  }
+
+  handleShowPlatformEventToggle() {
+    this.showPlatformEvent = !this.showPlatformEvent;
+  }
+
   handleClearMessageLogs() {
-    this.messages = [];
+    this.messages_ = [];
   }
 
   toggleOpenMessagePanel() {
