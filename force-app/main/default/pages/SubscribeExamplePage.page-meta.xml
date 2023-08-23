@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexPage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>57.0</apiVersion>
+    <availableInTouch>true</availableInTouch>
+    <confirmationTokenRequired>false</confirmationTokenRequired>
+    <label>Subscribe Example Page</label>
+    <packageVersions>
+        <majorNumber>202306</majorNumber>
+        <minorNumber>2</minorNumber>
+        <namespace>msmxSheet</namespace>
+    </packageVersions>
+</ApexPage>

@@ -1,0 +1,17 @@
+<apex:page>
+  <div>
+    <input type="text" id="acccountName" value="Acme" />
+    <p>Publish to MessageChannel </p>
+    <button onclick="publishMessage()">Publish</button>
+  </div>
+  <script>
+    var MC_SET_PARAMETERS = "{!$MessageChannel.msmxSheet__setParameters__c}";
+    function publishMessage(message) {
+      sforce.one.publish(MC_SET_PARAMETERS, {
+        parameters: {
+          accountName: document.querySelector("#acccountName").value,
+        }
+      });
+    }
+  </script>
+</apex:page>

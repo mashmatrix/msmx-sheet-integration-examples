@@ -1,0 +1,33 @@
+<apex:page>
+  <div>
+    <p>Subscribe to MessageChannel </p>
+    <button onclick="startSubscription()">Subscribe</button>
+    <p>Unsubscribe from subscription</p>
+    <button onclick="stopSubscription()">Unsubscribe</button>
+    <br/>
+    <br/>
+    <p>Received message:</p>
+    <textarea id="messageReceived" rows="10" />
+  </div>
+  <script>
+    // Load the MessageChannel token in a variable
+    var MC_FOCUS_CELL = "{!$MessageChannel.msmxSheet__focusCell__c}";
+    var subscr = null;
+
+    function handleFocusCell(message) {
+      console.log(message.cell.recordId);
+      document.querySelector("#messageReceived").value = JSON.stringify(message, null, 2);
+    }
+
+    function startSubscription() {
+      subscr = sforce.one.subscribe(MC_FOCUS_CELL, handleFocusCell, { scope: "APPLICATION" });
+    }
+
+    function stopSubscription() {
+      if (subscr) {
+        sforce.one.unsubscribe(subscr);
+        subscr = null;
+      }
+    }
+  </script>
+</apex:page>
