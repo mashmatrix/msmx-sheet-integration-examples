@@ -4,8 +4,8 @@
       "path": "force-app",
       "default": true,
       "package": "msmx-sheet-integration-examples",
-      "versionName": "ver 0.2",
-      "versionNumber": "0.2.0.NEXT",
+      "versionName": "ver 0.3",
+      "versionNumber": "0.3.0.NEXT",
       "versionDescription": "",
       "dependencies": [
         {
@@ -21,7 +21,6 @@
   "packageAliases": {
     "msmx-sheet-integration-examples": "0HoA70000000006KAA",
     "Mashmatrix Sheet": "04t0K000001E4ll",
-    "msmx-sheet-integration-examples@0.2.0-1": "04tA70000000Ue7IAE",
-    "msmx-sheet-integration-examples@0.2.0-2": "04tA70000000UmpIAE"
+    "msmx-sheet-integration-examples@0.3.0-1": "04tA70000000UmuIAE"
   }
 }
