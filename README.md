@@ -1,5 +1,7 @@
 # Mashmatrix Sheet Integration Examples
 
+- [README (Japanese)](./README_ja.md)
+
 This project is intended to show the possibilities of [Mashmatrix Sheet](https://www.mashmatrix.com/) using its open APIs.
 
 There are examples that uses following APIs:
@@ -69,7 +71,7 @@ $ sfdx force:org:open -u msmx-sheet-integration -p /lightning/n/msmxSheet__Mashm
 
 12. Focus on "Filter Control Integration" tab, open "Edit Page" from right top menu.
 
-13. Select "Accommodations Result" component, replace "Book ID" value to the copied book Id of "Accomodation" book in step 8.
+13. Select "Accommodations Result" component, replace "Book ID" value to the copied book Id of "Accommodation" book in step 8.
 
 14. Focus on "Message Debug" tab, open "Edit Page" from right top menu.
 
@@ -84,7 +86,7 @@ $ sfdx force:org:open -u msmx-sheet-integration -p /lightning/n/msmxSheet__Mashm
 On "Map Integration" tab, there are two Mashmatrix Sheet components and one custom map component in the page.
 The "Account Search" sheet component located in left pane queries account records in the organization, filtering by state or account type.
 The map component receives message of `loadComplete` with the searched result, then plots them on the map.
-If the user clicks a plotted account entry, it publishes `setParameter` message with its account ID.
+If the user clicks a plotted account entry, it publishes `setParameters` message with its account ID.
 The "Contacts in Selected Account" sheet component, located in the right-bottom of the page, is referring the accountId parameter in its filter,
 so it will list all contact records belonging to selected account.
 
@@ -93,7 +95,7 @@ so it will list all contact records belonging to selected account.
 <img width="2055" alt="filter-control-integration-screen" src="https://github.com/mashmatrix/msmx-sheet-integration-examples/assets/23387/03a43eb9-b823-405f-83ee-5bfccc3077a2">
 
 On "Filter Condition Integration" tab, there are two components in the page.
-One is the custom control component, which publishes `setParameter` message according to the control input by the user.
+One is the custom control component, which publishes `setParameters` message according to the control input by the user.
 Another is a Mashmatrix Sheet component that lists accomodations data in the org, which references parameter valueｓ in its filters.
 By changing the control input in the control component, the sheet component will be automatically refreshed to list the records matching with the inputted conditions.
 
