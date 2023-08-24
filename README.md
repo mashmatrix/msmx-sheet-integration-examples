@@ -12,7 +12,8 @@ There are examples that uses following APIs:
 ## Preparation
 
 - Check out the latest source code of this repository
-- Connect to Salesforce DevHub org to create new scratch orgs.
+- Install Salesforce CLI
+- Connect to Salesforce DevHub org to create new scratch orgs
 
 ## Setup Procedure
 
