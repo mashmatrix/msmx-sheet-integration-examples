@@ -96,9 +96,7 @@ $ sfdx force:org:open -u msmx-sheet-integration -p /lightning/n/msmxSheet__Mashm
 
 「Filter Condition Integration」タブのページ内には２つのコンポーネントがあります。
 1つはカスタムの制御用コンポーネントで、ユーザによる入力に応じて `setParameters` メッセージを発行します。
-One is the custom control component, which publishes `setParameter` message according to the control input by the user.
 もう1つは組織内の宿泊先施設データを一覧するMashmatrix Sheetコンポーネントで、パラメータ値をフィルタで参照しています。
-Another is a Mashmatrix Sheet component that lists accomodations data in the org, which references parameter valueｓ in its filters.
 制御コンポーネントの入力を変化させることで、Sheetコンポーネントは自動的に入力された条件に合うレコードをリストアップして更新します。
 
 ### Message Debug
