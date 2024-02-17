@@ -100,6 +100,8 @@ $ sfdx force:org:open -u msmx-sheet-integration -p /lightning/n/msmxSheet__Mashm
 もう1つは組織内の宿泊先施設データを一覧するMashmatrix Sheetコンポーネントで、パラメータ値をフィルタで参照しています。
 制御コンポーネントの入力を変化させることで、Sheetコンポーネントは自動的に入力された条件に合うレコードをリストアップして更新します。
 
+フィルタの中でパラメータの値を参照するには、ユーザガイド内の「[参照値](https://docs.mashmatrix.com/mashmatrix-sheet/v/ja/functions_about_displaying_data/reference_value)」をチェックしてください。
+
 ### Message Debug
 
 <img width="2055" alt="message-debug-screen" src="https://github.com/mashmatrix/msmx-sheet-integration-examples/assets/23387/b06a2dc3-78b7-4026-b590-fa70c93e4e34">
