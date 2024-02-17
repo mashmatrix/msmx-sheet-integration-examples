@@ -100,6 +100,8 @@ One is the custom control component, which publishes `setParameters` message acc
 Another is a Mashmatrix Sheet component that lists accomodations data in the org, which references parameter valueｓ in its filters.
 By changing the control input in the control component, the sheet component will be automatically refreshed to list the records matching with the inputted conditions.
 
+To reference parameter values in filters, please check the ”[Reference Value](https://docs.mashmatrix.com/mashmatrix-sheet/functions_about_displaying_data/reference_value)" page in user guide.
+
 ### Message Debug
 
 <img width="2055" alt="message-debug-screen" src="https://github.com/mashmatrix/msmx-sheet-integration-examples/assets/23387/b06a2dc3-78b7-4026-b590-fa70c93e4e34">
