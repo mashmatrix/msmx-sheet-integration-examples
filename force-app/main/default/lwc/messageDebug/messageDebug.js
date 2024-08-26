@@ -17,6 +17,7 @@ import MC_FOCUS_CELL from "@salesforce/messageChannel/msmxSheet__focusCell__c";
 import MC_LOAD_COMPLETE from "@salesforce/messageChannel/msmxSheet__loadComplete__c";
 import MC_SET_PARAMETERS from "@salesforce/messageChannel/msmxSheet__setParameters__c";
 import MC_EXECUTE_COMMAND from "@salesforce/messageChannel/msmxSheet__executeCommand__c";
+import MC_FIRE_CUSTOM_EVENT from "@salesforce/messageChannel/msmxSheet__fireCustomEvent__c";
 
 /**
  *
@@ -26,7 +27,8 @@ const MESSAGE_CHANNELS = {
   focusCell: MC_FOCUS_CELL,
   loadComplete: MC_LOAD_COMPLETE,
   setParameters: MC_SET_PARAMETERS,
-  executeCommand: MC_EXECUTE_COMMAND
+  executeCommand: MC_EXECUTE_COMMAND,
+  fireCustomEvent: MC_FIRE_CUSTOM_EVENT
 };
 
 const PLATFORM_EVENTS = {
