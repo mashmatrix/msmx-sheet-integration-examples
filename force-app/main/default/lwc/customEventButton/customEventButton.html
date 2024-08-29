@@ -1,0 +1,15 @@
+<template>
+  <lightning-card title="Custom Event on Action Button">
+    <div class="slds-var-m-horizontal_medium">
+      <p>
+        <strong>Total Price Per Day:</strong>
+        <lightning-formatted-number
+          value={totalPrice}
+          format-style="currency"
+        ></lightning-formatted-number>
+      </p>
+      <p><strong>Total Bathrooms:</strong> {totalBathrooms}</p>
+      <p><strong>Total Bedrooms:</strong> {totalBedrooms}</p>
+    </div>
+  </lightning-card>
+</template>

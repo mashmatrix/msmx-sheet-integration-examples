@@ -61,6 +61,10 @@
         <viewAllRecords>false</viewAllRecords>
     </objectPermissions>
     <tabSettings>
+        <tab>Custom_Event</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+    <tabSettings>
         <tab>Filter_Control_Integration</tab>
         <visibility>Visible</visibility>
     </tabSettings>

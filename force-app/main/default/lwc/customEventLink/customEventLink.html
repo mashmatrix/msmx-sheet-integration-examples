@@ -1,0 +1,62 @@
+<template>
+  <lightning-card title="Custom Event on Action Link">
+    <div
+      if:true={record}
+      class="slds-box slds-m-around_medium slds-p-around_medium"
+    >
+      <div class="slds-grid slds-wrap">
+        <div class="slds-col slds-size_1-of-1">
+          <img src={record.ImageURL__c} style="max-width: 100%" alt="Image" />
+        </div>
+        <div class="slds-col slds-size_1-of-1">
+          <h2 class="slds-text-heading_medium">{record.Name}</h2>
+        </div>
+        <div class="slds-col slds-size_1-of-1 slds-text-body_small">
+          <div>
+            <lightning-icon
+              icon-name="utility:checkin"
+              alternative-text="checkin!"
+              title="checkin"
+              size="xx-small"
+            ></lightning-icon>
+            <span class="slds-m-left_xx-small">{record.Address__c}</span>
+          </div>
+          <div>
+            <lightning-icon
+              icon-name="utility:currency"
+              alternative-text="currency!"
+              title="currency"
+              size="xx-small"
+            ></lightning-icon>
+            <span class="slds-m-left_xx-small">
+              <lightning-formatted-number
+                value={record.PricePerDay__c}
+                format-style="currency"
+              ></lightning-formatted-number>
+            </span>
+          </div>
+          <div>
+            <lightning-icon
+              icon-name="standard:facility_bed"
+              alternative-text="bed room!"
+              title="bed"
+              size="xx-small"
+            ></lightning-icon>
+            <span class="slds-m-left_xx-small"> {record.Bedrooms__c} </span>
+          </div>
+          <div>
+            <template for:each={record.amenities} for:item="amenity">
+              <lightning-badge
+                key={amenity}
+                label={amenity}
+                class="slds-badge_lightest slds-m-right_xx-small slds-m-top_xx-small"
+                icon-name="utility:check"
+                style="margin-left: 0 !important"
+              ></lightning-badge>
+            </template>
+          </div>
+        </div>
+      </div>
+    </div>
+  </lightning-card>
+</template>

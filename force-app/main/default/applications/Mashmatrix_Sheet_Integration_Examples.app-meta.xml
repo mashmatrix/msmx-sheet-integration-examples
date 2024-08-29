@@ -14,5 +14,6 @@
     <tabs>Map_Integration</tabs>
     <tabs>Filter_Control_Integration</tabs>
     <tabs>Message_Debug</tabs>
+    <tabs>Custom_Event</tabs>
     <uiType>Lightning</uiType>
 </CustomApplication>
