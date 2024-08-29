@@ -26,7 +26,7 @@ $ sfdx force:org:create -f config/project-scratch-def.json -a msmx-sheet-integra
 2. Install Mashmatrix Sheet trial package from command line.
 
 ```sh
-$ sfdx force:package:install --package 04t0K000001E4ll -u msmx-sheet-integration -w 10
+$ sfdx force:package:install --package 04tIT0000013Pp3YAE -u msmx-sheet-integration -w 10
 ```
 
 3. Assign required permission sets to the scratch org's default user.
