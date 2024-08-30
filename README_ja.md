@@ -119,5 +119,5 @@ $ sfdx force:org:open -u msmx-sheet-integration -p /lightning/n/msmxSheet__Mashm
 <img width="2055" alt="message-debug-screen" src="https://github.com/user-attachments/assets/56c60aa2-8aad-4d31-bb73-a3b99dfc361d">
 
 「Custom Event」タブでは、1つのシートコンポーネントと2つのカスタムコンポーネントが表示されます。
-「Custom Event on Action Button」コンポーネントは、「Sum」ボタンをクリックした後、「calcSum」という名前のカスタムイベントを受け取り、現在選択されているレコードの「Price per Day」、「Bathrooms」、「Bedrooms」列の合計を計算します。
+「Custom Event on Action Button」コンポーネントは、「sum」ボタンがクリックされたときに、「calcSum」という名前のカスタムイベントを受け取り、現在選択されているレコードの「Price per Day」、「Bathrooms」、「Bedrooms」列の合計を計算します。
 「Custom Event on Action Link」コンポーネントは、「Accommodation Name」がクリックされたときに、「accommodationDetail」という名前のカスタムイベントを受け取り、宿泊施設の詳細情報を表示します。
