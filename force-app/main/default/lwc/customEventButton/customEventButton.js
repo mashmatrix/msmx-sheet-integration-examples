@@ -1,4 +1,4 @@
-import { LightningElement, track } from "lwc";
+import { LightningElement } from "lwc";
 import {
   APPLICATION_SCOPE,
   createMessageContext,
@@ -24,11 +24,11 @@ export default class CustomEventButton extends LightningElement {
 
   subscriptions = [];
 
-  @track totalPrice = 0;
+  totalPrice = 0;
 
-  @track totalBathrooms = 0;
+  totalBathrooms = 0;
 
-  @track totalBedrooms = 0;
+  totalBedrooms = 0;
 
   connectedCallback() {
     this._initMessageChannelSubscriptions();

@@ -1,4 +1,4 @@
-import { LightningElement, track } from "lwc";
+import { LightningElement } from "lwc";
 import {
   APPLICATION_SCOPE,
   createMessageContext,
@@ -21,7 +21,7 @@ export default class CustomEventLink extends LightningElement {
 
   subscriptions = [];
 
-  @track record;
+  record;
 
   connectedCallback() {
     this._initMessageChannelSubscriptions();
