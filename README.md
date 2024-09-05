@@ -26,7 +26,7 @@ $ sfdx force:org:create -f config/project-scratch-def.json -a msmx-sheet-integra
 2. Install Mashmatrix Sheet trial package from command line.
 
 ```sh
-$ sfdx force:package:install --package 04t0K000001E4ll -u msmx-sheet-integration -w 10
+$ sfdx force:package:install --package 04tIT0000013Pp3YAE -u msmx-sheet-integration -w 10
 ```
 
 3. Assign required permission sets to the scratch org's default user.
@@ -78,6 +78,10 @@ $ sfdx force:org:open -u msmx-sheet-integration -p /lightning/n/msmxSheet__Mashm
 
 15. Select "Mashmatrix Sheet" component in the left pane, replace "Book ID" value to the copied book Id of "Book for Event/Message Debug"
 
+16. Focus on "Custom Event" tab, open "Edit Page" from right top menu.
+
+17. Select "Mashmatrix Sheet" component in left pane, replace "Book ID" value to the copied book Id of "Custom Event" book in step 8.
+
 ## Examples
 
 ### Map Integration
@@ -109,3 +113,11 @@ To reference parameter values in filters, please check the ”[Reference Value](
 On "Message Debug" tab, it shows one sheet component and two custom components.
 The "Debug Messages" component lists all messages published to message channels, and events published to platform events of Mashmatrix Sheet in real time.
 The "Publish Messages" component can create raw messages to publish to message channels by specifying message payload in JSON in the textarea.
+
+### Custom Event
+
+<img width="2055" alt="message-debug-screen" src="https://github.com/user-attachments/assets/56c60aa2-8aad-4d31-bb73-a3b99dfc361d">
+
+On the "Custom Event" tab, it shows one sheet component and two custom components.
+The "Custom Event on Action Button" component will receive a custom event named "calcSum" after clicking the "Sum" button to perform the sum of the "Price per Day", "Bathrooms" and "Bedrooms" columns of the currently selected records.
+The "Custom Event on Action Link" component will receive a custom event named "accommodationDetail" when the "Accommodation Name" is clicked. It will then display the detailed information of the accommodation.

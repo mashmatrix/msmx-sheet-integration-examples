@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomTab xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Custom Event Example</description>
+    <flexiPage>Custom_Event_Example_Page</flexiPage>
+    <label>Custom Event</label>
+    <motif>Custom9: Lightning</motif>
+</CustomTab>
