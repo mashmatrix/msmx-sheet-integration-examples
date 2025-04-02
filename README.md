@@ -29,26 +29,32 @@ $ sfdx force:org:create -f config/project-scratch-def.json -a msmx-sheet-integra
 $ sfdx force:package:install --package 04tIT0000013Pp3YAE -u msmx-sheet-integration -w 10
 ```
 
-3. Assign required permission sets to the scratch org's default user.
+3. Install Dynamic Interaction Component Example from command line.
+
+```sh
+$ sfdx force:package:install --package 04tdL0000008xEDQAY -u msmx-sheet-integration -w 10
+```
+
+4. Assign required permission sets to the scratch org's default user.
 
 ```sh
 $ sfdx force:user:permset:assign --permsetname msmxSheet__MashmatrixSheetUser -u msmx-sheet-integration
 $ sfdx force:user:permset:assign --permsetname msmxSheet__MashmatrixSheetAdministrator -u msmx-sheet-integration
 ```
 
-4. Push this example repository's source code to the scratch org.
+5. Push this example repository's source code to the scratch org.
 
 ```sh
 $ sfdx force:source:push -u msmx-sheet-integration
 ```
 
-5. Assign a permission set to access example components.
+6. Assign a permission set to access example components.
 
 ```sh
 $ sfdx force:user:permset:assign --permsetname Mashmatrix_Sheet_Integration_Examples -u msmx-sheet-integration
 ```
 
-6. Load example data using [SFDX migration automatic](https://github.com/stomita/sfdx-migration-automatic) plugin
+7. Load example data using [SFDX migration automatic](https://github.com/stomita/sfdx-migration-automatic) plugin
 
 ```sh
 $ sfdx plugins:install sfdx-migration-automatic
@@ -56,31 +62,35 @@ $ sfdx automig:load --inputdir data/records -u msmx-sheet-integration
 $ sfdx automig:load --inputdir data/books -u msmx-sheet-integration
 ```
 
-7. Open Mashmatrix Sheet to confirm the loaded books/records are accessible.
+8. Open Mashmatrix Sheet to confirm the loaded books/records are accessible.
 
 ```sh
 $ sfdx force:org:open -u msmx-sheet-integration -p /lightning/n/msmxSheet__MashmatrixSheet
 ```
 
-8. Confim IDs of the books listed in left sidebar (from book setting menu), and memo them with their name.
+9. Confim IDs of the books listed in left sidebar (from book setting menu), and memo them with their name.
 
-9. Open "Mashmatrix Sheet Integration Examples" app from app launcher.
+10. Open "Mashmatrix Sheet Integration Examples" app from app launcher.
 
-10. Focus on "Map Integration" tab, open "Edit Page" from right top menu.
+11. Focus on "Map Integration" tab, open "Edit Page" from right top menu.
 
-11. Select "Account Search" component, replace "Book ID" value to the memoed book ID of "Account/Contact" book in step 8. So to "Account Map" and "Contact in Selected Account" components.
+12. Select "Account Search" component, replace "Book ID" value to the memoed book ID of "Account/Contact" book in step 9. So to "Account Map" and "Contact in Selected Account" components.
 
-12. Focus on "Filter Control Integration" tab, open "Edit Page" from right top menu.
+13. Focus on "Dynamic Interaction" tab, open "Edit Page" from right top menu.
 
-13. Select "Accommodations Result" component, replace "Book ID" value to the copied book Id of "Accommodation" book in step 8.
+14. Select the first and second "Mashmatrix Sheet" component in left pane, replace "Book ID" value to the copied book Id of "Account/Contact" book in step 9.
 
-14. Focus on "Message Debug" tab, open "Edit Page" from right top menu.
+15. Focus on "Filter Control Integration" tab, open "Edit Page" from right top menu.
 
-15. Select "Mashmatrix Sheet" component in the left pane, replace "Book ID" value to the copied book Id of "Book for Event/Message Debug"
+16. Select "Accommodations Result" component, replace "Book ID" value to the copied book Id of "Accommodation" book in step 9.
 
-16. Focus on "Custom Event" tab, open "Edit Page" from right top menu.
+17. Focus on "Message Debug" tab, open "Edit Page" from right top menu.
 
-17. Select "Mashmatrix Sheet" component in left pane, replace "Book ID" value to the copied book Id of "Custom Event" book in step 8.
+18. Select "Mashmatrix Sheet" component in the left pane, replace "Book ID" value to the copied book Id of "Book for Event/Message Debug"
+
+19. Focus on "Custom Event" tab, open "Edit Page" from right top menu.
+
+20. Select "Mashmatrix Sheet" component in left pane, replace "Book ID" value to the copied book Id of "Custom Event" book in step 9.
 
 ## Examples
 
