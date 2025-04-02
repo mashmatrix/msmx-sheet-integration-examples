@@ -136,7 +136,7 @@ The "Custom Event on Action Link" component will receive a custom event named "a
 
 <img width="2055" alt="dynamic-interaction-screen" src="https://github.com/user-attachments/assets/4093abcd-1c67-4811-a6b2-bef9d30300ec">
 
-On the "Dynamic Interaction" tab, there are two Mashmatrix Sheet components and one custom map component in the page.
+On the "Dynamic Interaction" tab, there are two Mashmatrix Sheet components, one custom map component, and one custom chart component on the page.
 
 The "Account Chart" component will display the total revenue of the account when focusing on a cell in the first sheet.
 
