@@ -131,3 +131,15 @@ The "Publish Messages" component can create raw messages to publish to message c
 On the "Custom Event" tab, it shows one sheet component and two custom components.
 The "Custom Event on Action Button" component will receive a custom event named "calcSum" after clicking the "Sum" button to perform the sum of the "Price per Day", "Bathrooms" and "Bedrooms" columns of the currently selected records.
 The "Custom Event on Action Link" component will receive a custom event named "accommodationDetail" when the "Accommodation Name" is clicked. It will then display the detailed information of the accommodation.
+
+### Dynamic Interaction
+
+<img width="2055" alt="dynamic-interaction-screen" src="https://github.com/user-attachments/assets/4093abcd-1c67-4811-a6b2-bef9d30300ec">
+
+On the "Dynamic Interaction" tab, there are two Mashmatrix Sheet components and one custom map component in the page.
+
+The "Account Chart" component will display the total revenue of the account when focusing on a cell in the first sheet.
+
+The "Account Map" component receives a dynamic interaction event when a cell is focused, or records are selected in the first sheet on the left, then plots them on the map.
+If the user clicks on the drawn account item, it will publish a dynamic interaction event, this event will proceed to set the paramaters property with a value like accountId={!Event.accountId} of the 2nd sheet,
+the 2nd sheet will proceed to list the contact records corresponding to the value set in the parameters property
