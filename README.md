@@ -32,7 +32,7 @@ $ sfdx force:package:install --package 04tIT0000013SjPYAU -u msmx-sheet-integrat
 3. Install Dynamic Interaction Component Example from command line.
 
 ```sh
-$ sfdx force:package:install --package 04tdL0000008xEDQAY -u msmx-sheet-integration -w 10
+$ sfdx force:package:install --package 04tdL0000008z7xQAA -u msmx-sheet-integration -w 10
 ```
 
 4. Assign required permission sets to the scratch org's default user.
