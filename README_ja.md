@@ -26,29 +26,35 @@ $ sfdx force:org:create -f config/project-scratch-def.json -a msmx-sheet-integra
 2. コマンドラインでMashmatrix Sheetのトライアルパッケージをインストールします
 
 ```sh
-$ sfdx force:package:install --package 04tIT0000013Pp3YAE -u msmx-sheet-integration -w 10
+$ sfdx force:package:install --package 04tIT0000013SjPYAU -u msmx-sheet-integration -w 10
 ```
 
-3. スクラッチ組織のデフォルトのユーザに必要な権限セットを割り当てます
+3. コマンドラインから Dynamic Interaction Component Example をインストールする。
+
+```sh
+$ sfdx force:package:install --package 04tdL0000008xEDQAY -u msmx-sheet-integration -w 10
+```
+
+4. スクラッチ組織のデフォルトのユーザに必要な権限セットを割り当てます
 
 ```sh
 $ sfdx force:user:permset:assign --permsetname msmxSheet__MashmatrixSheetUser -u msmx-sheet-integration
 $ sfdx force:user:permset:assign --permsetname msmxSheet__MashmatrixSheetAdministrator -u msmx-sheet-integration
 ```
 
-4. このレポジトリのソースコードをスクラッチ組織にプッシュして配布します
+5. このレポジトリのソースコードをスクラッチ組織にプッシュして配布します
 
 ```sh
 $ sfdx force:source:push -u msmx-sheet-integration
 ```
 
-5. サンプルに含まれるコンポーネントにアクセスするための権限セットを割り当てます
+6. サンプルに含まれるコンポーネントにアクセスするための権限セットを割り当てます
 
 ```sh
 $ sfdx force:user:permset:assign --permsetname Mashmatrix_Sheet_Integration_Examples -u msmx-sheet-integration
 ```
 
-6. デモ用のデータを[SFDX migration automatic](https://github.com/stomita/sfdx-migration-automatic) プラグインを用いてロードします
+7. デモ用のデータを[SFDX migration automatic](https://github.com/stomita/sfdx-migration-automatic) プラグインを用いてロードします
 
 ```sh
 $ sfdx plugins:install sfdx-migration-automatic
@@ -56,31 +62,35 @@ $ sfdx automig:load --inputdir data/records -u msmx-sheet-integration
 $ sfdx automig:load --inputdir data/books -u msmx-sheet-integration
 ```
 
-7. Mashmatrix Sheetアプリを開いてロードしたブック及びレコードにアクセスできることを確かめます
+8. Mashmatrix Sheetアプリを開いてロードしたブック及びレコードにアクセスできることを確かめます
 
 ```sh
 $ sfdx force:org:open -u msmx-sheet-integration -p /lightning/n/msmxSheet__MashmatrixSheet
 ```
 
-8. 左サイドバー内にリストされているブックのIDをブックの設定画面から確かめて、ブックの名前とともにメモしておきます
+9. 左サイドバー内にリストされているブックのIDをブックの設定画面から確かめて、ブックの名前とともにメモしておきます
 
-9. 「Mashmatrix Sheet Integration Examples」アプリをアプリケーションランチャーから選択します
+10. 「Mashmatrix Sheet Integration Examples」アプリをアプリケーションランチャーから選択します
 
-10. 「Map Integration」タブにフォーカスし、画面の右上のメニューから「ページを編集」を選びます
+11. 「Map Integration」タブにフォーカスし、画面の右上のメニューから「ページを編集」を選びます
 
-11. 「Account Search」コンポーネントを選び、「Book ID」プロパティの値をステップ8でメモしておいた「Acccount/Contact」ブックのIDの値に置き換えます。同様に「Account Map」および「Contacts in Selected Account」コンポーネントについてもブックIDを置き換えます。
+12. 「Account Search」コンポーネントを選び、「Book ID」プロパティの値をステップ9でメモしておいた「Acccount/Contact」ブックのIDの値に置き換えます。同様に「Account Map」および「Contacts in Selected Account」コンポーネントについてもブックIDを置き換えます。
 
-12. 「Filter Control Integration」タブにフォーカスし、 画面の右上のメニューから「ページを編集」を選びます
+13. 「Dynamic Interaction」タブにフォーカスし、画面の右上のメニューから「ページを編集」を選びます
 
-13. 「Accommodations Result」コンポーネントを選び、「Book ID」プロパティの値をステップ8でメモしておいた「Accommodation」ブックのIDの値に置き換えます
+14. 左側のペインで最初と2番目の「Mashmatrix Sheet」コンポーネントを選択し、手順9でコピーした「Account/Contact」ブックのBook IDの値に置き換える。
 
-14. 「Message Debug」タブにフォーカスし、 画面の右上のメニューから「ページを編集」を選びます
+15. 「Filter Control Integration」タブにフォーカスし、 画面の右上のメニューから「ページを編集」を選びます
 
-15. 左ペインにあるMashmatrix Sheetコンポーネントを選び、「Book ID」プロパティの値をステップ8でメモしておいた「Book for Event/Message Debug」ブックのIDの値に置き換えます
+16. 「Accommodations Result」コンポーネントを選び、「Book ID」プロパティの値をステップ9でメモしておいた「Accommodation」ブックのIDの値に置き換えます
 
-16. 「Custom Event」タブにフォーカスし、画面の右上のメニューから「ページを編集」を選びます
+17. 「Message Debug」タブにフォーカスし、 画面の右上のメニューから「ページを編集」を選びます
 
-17. 左ペインにあるMashmatrix Sheetコンポーネントを選び、「Book ID」プロパティの値をステップ8でメモしておいた「Custom Event」ブックのIDの値に置き換えます
+18. 左ペインにあるMashmatrix Sheetコンポーネントを選び、「Book ID」プロパティの値をステップ9でメモしておいた「Book for Event/Message Debug」ブックのIDの値に置き換えます
+
+19. 「Custom Event」タブにフォーカスし、画面の右上のメニューから「ページを編集」を選びます
+
+20. 左ペインにあるMashmatrix Sheetコンポーネントを選び、「Book ID」プロパティの値をステップ9でメモしておいた「Custom Event」ブックのIDの値に置き換えます
 
 ## サンプルの解説
 
@@ -121,3 +131,16 @@ $ sfdx force:org:open -u msmx-sheet-integration -p /lightning/n/msmxSheet__Mashm
 「Custom Event」タブでは、1つのシートコンポーネントと2つのカスタムコンポーネントが表示されます。
 「Custom Event on Action Button」コンポーネントは、「sum」ボタンがクリックされたときに、「calcSum」という名前のカスタムイベントを受け取り、現在選択されているレコードの「Price per Day」、「Bathrooms」、「Bedrooms」列の合計を計算します。
 「Custom Event on Action Link」コンポーネントは、「Accommodation Name」がクリックされたときに、「accommodationDetail」という名前のカスタムイベントを受け取り、宿泊施設の詳細情報を表示します。
+
+### Dynamic Interaction
+
+<img width="2055" alt="dynamic-interaction-screen" src="https://github.com/user-attachments/assets/4093abcd-1c67-4811-a6b2-bef9d30300ec">
+
+「Dynamic Interaction」タブには、2つのMashmatrix Sheetコンポーネント、1つのカスタムマップコンポーネント、および1つのカスタムチャートコンポーネントが配置されています。
+
+「Account Chart」コンポーネントは、最初のシートのセルにフォーカスすると、そのアカウントの総収益を表示します。
+
+「Account Map」コンポーネントは、最初のシート（左側）でセルにフォーカスしたり、レコードを選択したりすると、動的インタラクションイベントを受信し、それらをマップ上にプロットします。
+ユーザーが描画されたアカウントのアイテムをクリックすると、動的インタラクションイベントが発行されます。
+このイベントは 2番目のシートのparametersプロパティにaccountId={!Event.accountId}のような値を設定し、
+2番目のシートは設定された値に対応する連絡先レコードを一覧表示します。
