@@ -42,10 +42,10 @@ $ sfdx force:user:permset:assign --permsetname msmxSheet__MashmatrixSheetUser -u
 $ sfdx force:user:permset:assign --permsetname msmxSheet__MashmatrixSheetAdministrator -u msmx-sheet-integration
 ```
 
-5. Push this example repository's source code to the scratch org.
+5. Deploy this example repository's source code to the scratch org.
 
 ```sh
-$ sfdx force:source:push -u msmx-sheet-integration
+$ sfdx force:source:deploy -p force-app/main -u msmx-sheet-integration
 ```
 
 6. Assign a permission set to access example components.

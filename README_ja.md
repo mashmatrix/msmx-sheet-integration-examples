@@ -42,10 +42,10 @@ $ sfdx force:user:permset:assign --permsetname msmxSheet__MashmatrixSheetUser -u
 $ sfdx force:user:permset:assign --permsetname msmxSheet__MashmatrixSheetAdministrator -u msmx-sheet-integration
 ```
 
-5. このレポジトリのソースコードをスクラッチ組織にプッシュして配布します
+5. このレポジトリのソースコードをスクラッチ組織にデプロイします。
 
 ```sh
-$ sfdx force:source:push -u msmx-sheet-integration
+$ sfdx force:source:deploy -p force-app/main -u msmx-sheet-integration
 ```
 
 6. サンプルに含まれるコンポーネントにアクセスするための権限セットを割り当てます
