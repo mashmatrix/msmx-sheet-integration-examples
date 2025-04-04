@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>63.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Accounts Map Dynamic Interaction</masterLabel>
+    <description>Show Accounts in Google Map with dynamic interaction</description>
+    <targets>
+        <target>lightning__AppPage</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__AppPage">
+            <property type="String" name="recordId" label="RecordId" />
+            <property name="recordIds" type="String" label="RecordIds" />
+            <event name="selectmarker" label="Select marker" description="This event fires when a marker is selected.">
+                <schema>
+                {
+                    "type": "object",
+                    "properties": {
+                        "accountId": {
+                            "type": "string",
+                            "title": "accountId"
+                        }
+                    }
+                }
+                </schema>
+            </event>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>
