@@ -19,7 +19,7 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>bookId</name>
-                    <value>a01BK000009rpvPYAQ</value>
+                    <value>a01BK00000LpIWgYAN</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>height</name>
@@ -37,8 +37,8 @@
                     <name>title</name>
                     <value>Accommodations Result</value>
                 </componentInstanceProperties>
-                <componentName>msmxSheet:Sheet</componentName>
-                <identifier>msmxSheet_Sheet</identifier>
+                <componentName>msmxSheet:sheetComponent</componentName>
+                <identifier>msmxSheet_sheetComponent</identifier>
             </componentInstance>
         </itemInstances>
         <name>region3</name>

@@ -5,7 +5,7 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>bookId</name>
-                    <value>a01BS0000152rb9YAA</value>
+                    <value>a01BK00000LpIWiYAN</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>componentId</name>
@@ -25,8 +25,8 @@
                 <componentInstanceProperties>
                     <name>title</name>
                 </componentInstanceProperties>
-                <componentName>msmxSheet:Sheet</componentName>
-                <identifier>msmxSheet_Sheet</identifier>
+                <componentName>msmxSheet:sheetComponent</componentName>
+                <identifier>msmxSheet_sheetComponent</identifier>
             </componentInstance>
         </itemInstances>
         <name>column1</name>
