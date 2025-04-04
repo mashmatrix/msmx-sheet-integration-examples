@@ -50,10 +50,6 @@
                 <name>parameters</name>
                 <value>accountId={!Event.accountId}</value>
             </mappings>
-            <mappings>
-                <name>publishEvents</name>
-                <value>false</value>
-            </mappings>
             <method>updateProperties</method>
             <name>flexipage:componentService</name>
             <properties>
