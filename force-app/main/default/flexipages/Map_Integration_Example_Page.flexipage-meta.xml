@@ -5,7 +5,7 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>bookId</name>
-                    <value>a01BK000009rutJYAQ</value>
+                    <value>a01BK00000LpIWhYAN</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>height</name>
@@ -23,8 +23,8 @@
                     <name>title</name>
                     <value>Account Search</value>
                 </componentInstanceProperties>
-                <componentName>msmxSheet:Sheet</componentName>
-                <identifier>msmxSheet_Sheet</identifier>
+                <componentName>msmxSheet:sheetComponent</componentName>
+                <identifier>msmxSheet_sheetComponent</identifier>
             </componentInstance>
         </itemInstances>
         <name>column1</name>
@@ -35,7 +35,7 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>bookId</name>
-                    <value>a01BK000009rutJYAQ</value>
+                    <value>a01BK00000LpIWhYAN</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>sheetId</name>
@@ -49,7 +49,7 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>bookId</name>
-                    <value>a01BK000009rutJYAQ</value>
+                    <value>a01BK00000LpIWhYAN</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>height</name>
@@ -66,8 +66,8 @@
                     <name>title</name>
                     <value>Contacts in Selected Account</value>
                 </componentInstanceProperties>
-                <componentName>msmxSheet:Sheet</componentName>
-                <identifier>msmxSheet_Sheet2</identifier>
+                <componentName>msmxSheet:sheetComponent</componentName>
+                <identifier>msmxSheet_sheetComponent2</identifier>
             </componentInstance>
         </itemInstances>
         <name>column2</name>

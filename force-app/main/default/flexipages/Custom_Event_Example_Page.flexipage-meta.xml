@@ -5,7 +5,7 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>bookId</name>
-                    <value>a01A200000GMLxUIAX</value>
+                    <value>a01BK00000LpIWjYAN</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>componentId</name>
@@ -24,8 +24,8 @@
                 <componentInstanceProperties>
                     <name>title</name>
                 </componentInstanceProperties>
-                <componentName>msmxSheet:Sheet</componentName>
-                <identifier>msmxSheet_Sheet</identifier>
+                <componentName>msmxSheet:sheetComponent</componentName>
+                <identifier>msmxSheet_sheetComponent</identifier>
             </componentInstance>
         </itemInstances>
         <name>region1</name>
