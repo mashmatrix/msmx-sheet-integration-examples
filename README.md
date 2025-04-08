@@ -20,7 +20,7 @@ There are examples that uses following APIs:
 1. Create a scratch org to setup integration examples.
 
 ```sh
-$ sfdx force:org:create -f config/project-scratch-def.json -a msmx-sheet-integration -w 10
+$ sfdx force:org:create -f config/project-scratch-def.json -a msmx-sheet-integration -c -w 10
 ```
 
 2. Install Mashmatrix Sheet trial package from command line.

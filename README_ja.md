@@ -20,7 +20,7 @@
 1. インテグレーションサンプルをセットアップするスクラッチ組織を作成します
 
 ```sh
-$ sfdx force:org:create -f config/project-scratch-def.json -a msmx-sheet-integration -w 10
+$ sfdx force:org:create -f config/project-scratch-def.json -a msmx-sheet-integration -c -w 10
 ```
 
 2. コマンドラインでMashmatrix Sheetのトライアルパッケージをインストールします
