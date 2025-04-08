@@ -20,38 +20,37 @@ There are examples that uses following APIs:
 1. Create a scratch org to setup integration examples.
 
 ```sh
-$ sfdx force:org:create -f config/project-scratch-def.json -a msmx-sheet-integration -c -w 10
+$ sf org create scratch -f config/project-scratch-def.json -a msmx-sheet-integration -c -w 10
 ```
 
 2. Install Mashmatrix Sheet trial package from command line.
 
 ```sh
-$ sfdx force:package:install --package 04tIT0000013SjPYAU -u msmx-sheet-integration -w 10
+$ sf package install --package 04tIT0000013SjPYAU -o msmx-sheet-integration -w 10
 ```
 
 3. Install Dynamic Interaction Component Example from command line.
 
 ```sh
-$ sfdx force:package:install --package 04tdL0000008z7xQAA -u msmx-sheet-integration -w 10
+$ sf package install --package 04tdL0000008z7xQAA -o msmx-sheet-integration -w 10
 ```
 
 4. Assign required permission sets to the scratch org's default user.
 
 ```sh
-$ sfdx force:user:permset:assign --permsetname msmxSheet__MashmatrixSheetUser -u msmx-sheet-integration
-$ sfdx force:user:permset:assign --permsetname msmxSheet__MashmatrixSheetAdministrator -u msmx-sheet-integration
+$ sf org assign permset --name msmxSheet__MashmatrixSheetUser --name msmxSheet__MashmatrixSheetAdministrator -o msmx-sheet-integration
 ```
 
 5. Deploy this example repository's source code to the scratch org.
 
 ```sh
-$ sfdx force:source:deploy -p force-app/main -u msmx-sheet-integration
+$ sf project deploy start -d force-app/main -o msmx-sheet-integration
 ```
 
 6. Assign a permission set to access example components.
 
 ```sh
-$ sfdx force:user:permset:assign --permsetname Mashmatrix_Sheet_Integration_Examples -u msmx-sheet-integration
+$ sf org assign permset --name Mashmatrix_Sheet_Integration_Examples -o msmx-sheet-integration
 ```
 
 7. Load example data using [SFDX migration automatic](https://github.com/stomita/sfdx-migration-automatic) plugin
@@ -65,7 +64,7 @@ $ sfdx automig:load --inputdir data/books -u msmx-sheet-integration
 8. Open Mashmatrix Sheet to confirm the loaded books/records are accessible.
 
 ```sh
-$ sfdx force:org:open -u msmx-sheet-integration -p /lightning/n/msmxSheet__MashmatrixSheet
+$ sf org open -o msmx-sheet-integration -p /lightning/n/msmxSheet__MashmatrixSheet
 ```
 
 9. Confim IDs of the books listed in left sidebar (from book setting menu), and memo them with their name.

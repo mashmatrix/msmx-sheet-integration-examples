@@ -20,38 +20,37 @@
 1. インテグレーションサンプルをセットアップするスクラッチ組織を作成します
 
 ```sh
-$ sfdx force:org:create -f config/project-scratch-def.json -a msmx-sheet-integration -c -w 10
+$ sf org create scratch -f config/project-scratch-def.json -a msmx-sheet-integration -c -w 10
 ```
 
 2. コマンドラインでMashmatrix Sheetのトライアルパッケージをインストールします
 
 ```sh
-$ sfdx force:package:install --package 04tIT0000013SjPYAU -u msmx-sheet-integration -w 10
+$ sf package install --package 04tIT0000013SjPYAU -o msmx-sheet-integration -w 10
 ```
 
 3. コマンドラインから Dynamic Interaction Component Example をインストールする。
 
 ```sh
-$ sfdx force:package:install --package 04tdL0000008z7xQAA -u msmx-sheet-integration -w 10
+$ sf package install --package 04tdL0000008z7xQAA -o msmx-sheet-integration -w 10
 ```
 
 4. スクラッチ組織のデフォルトのユーザに必要な権限セットを割り当てます
 
 ```sh
-$ sfdx force:user:permset:assign --permsetname msmxSheet__MashmatrixSheetUser -u msmx-sheet-integration
-$ sfdx force:user:permset:assign --permsetname msmxSheet__MashmatrixSheetAdministrator -u msmx-sheet-integration
+$ sf org assign permset --name msmxSheet__MashmatrixSheetUser --name msmxSheet__MashmatrixSheetAdministrator -o msmx-sheet-integration
 ```
 
 5. このレポジトリのソースコードをスクラッチ組織にデプロイします。
 
 ```sh
-$ sfdx force:source:deploy -p force-app/main -u msmx-sheet-integration
+$ sf project deploy start -d force-app/main -o msmx-sheet-integration
 ```
 
 6. サンプルに含まれるコンポーネントにアクセスするための権限セットを割り当てます
 
 ```sh
-$ sfdx force:user:permset:assign --permsetname Mashmatrix_Sheet_Integration_Examples -u msmx-sheet-integration
+$ sf org assign permset --name Mashmatrix_Sheet_Integration_Examples -o msmx-sheet-integration
 ```
 
 7. デモ用のデータを[SFDX migration automatic](https://github.com/stomita/sfdx-migration-automatic) プラグインを用いてロードします
@@ -65,7 +64,7 @@ $ sfdx automig:load --inputdir data/books -u msmx-sheet-integration
 8. Mashmatrix Sheetアプリを開いてロードしたブック及びレコードにアクセスできることを確かめます
 
 ```sh
-$ sfdx force:org:open -u msmx-sheet-integration -p /lightning/n/msmxSheet__MashmatrixSheet
+$ sf org open -o msmx-sheet-integration -p /lightning/n/msmxSheet__MashmatrixSheet
 ```
 
 9. 左サイドバー内にリストされているブックのIDをブックの設定画面から確かめて、ブックの名前とともにメモしておきます
