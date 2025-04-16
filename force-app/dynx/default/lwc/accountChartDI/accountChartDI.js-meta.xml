@@ -10,6 +10,31 @@
     <targetConfigs>
         <targetConfig targets="lightning__AppPage">
             <property name="recordId" type="String" label="RecordId" />
+            <event name="clickchart" label="Click on the chart" description="This event is triggered when clicking on a column or year on the chart.">
+                <schema>
+                {
+                    "type": "object",
+                    "properties": {
+                        "accountId": {
+                            "type": "string",
+                            "title": "accountId"
+                        },
+                        "startDate": {
+                            "type": "string",
+                            "title": "startDate"
+                        },
+                        "endDate": {
+                            "type": "string",
+                            "title": "endDate"
+                        },
+                        "year": {
+                            "type": "string",
+                            "title": "year"
+                        }
+                    }
+                }
+                </schema>
+            </event>
         </targetConfig>
     </targetConfigs>
 </LightningComponentBundle>
