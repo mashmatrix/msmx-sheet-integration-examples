@@ -138,4 +138,6 @@ The "Custom Event on Action Link" component will receive a custom event named "a
 On the "Dynamic Interaction" tab, there are three Mashmatrix Sheet components and one custom chart component on the page.
 
 The "Account Chart" component will display the total amount from Opportunities grouped by Account when a record is focused or selected in the first sheet.
-When the user clicks on a bar in the chart, it will publish a dynamic interaction event that includes the attributes (accountId, startDate, endDate, year). Then, it will set the `parameters` property with values such as `accountId={!Event.accountId}&startDate={!Event.startDate}&endDate={!Event.endDate}` for the second sheet. Similarly, it will set the `parameters` property with the value `year={!Event.year}` for the third sheet.
+When clicking on a bar in the chart, it will publish a dynamic interaction event that includes the properties (accountId, startDate, endDate, year).
+The dynamic interaction event will set the `parameters` property of the 2nd sheet to the value `accountId={!Event.accountId}&startDate={!Event.startDate}&endDate={!Event.endDate}`, since the filter is set to the closeDate and accountId columns, the 2nd sheet will refresh according to the selected accountId and startDate, endDate
+Similarly, it will set the `parameters` property for the 3rd sheet to the value `year={!Event.year}`, since the filter of the 3rd sheet is set to the year column, the 3rd sheet will be refreshed according to the selected year

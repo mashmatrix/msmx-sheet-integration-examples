@@ -137,7 +137,8 @@ $ sf org open -o msmx-sheet-integration -p /lightning/n/msmxSheet__MashmatrixShe
 
 「Dynamic Interaction」タブには、3つのMashmatrix Sheetコンポーネントと1つのカスタムチャートコンポーネントがページ上に配置されています。
 
-「Account Chart」コンポーネントは、最初のシートでレコードがフォーカスまたは選択されたときに、Accountごとにグループ化されたOpportunityの合計Amountを表示します。
-ユーザーがチャートのバーをクリックすると、accountId、startDate、endDate、yearといった属性を含むDynamic Interactionイベントが発行されます。
-その後、第2のシートに対しては、parametersプロパティに accountId={!Event.accountId}&startDate={!Event.startDate}&endDate={!Event.endDate} の値が設定されます。
-同様に、第3のシートには year={!Event.year} の値でparametersプロパティが設定されます。
+「Account Chart」コンポーネントは、最初のシートでレコードがフォーカスまたは選択されたときに、Accountごとにグループ化されたOpportunityの合計金額を表示します。
+チャート内のバーをクリックすると、accountId、startDate、endDate、year というプロパティを含むDynamic Interactionイベントが発行されます。
+このDynamic Interactionイベントは、第2のシートの parameters プロパティに accountId={!Event.accountId}&startDate={!Event.startDate}&endDate={!Event.endDate} という値を設定します。
+第2のシートでは、フィルターが closeDate と accountId 列に設定されているため、選択された accountId および startDate、endDate に基づいて自動的に更新されます。
+同様に、第3のシートには year={!Event.year} の値で parameters プロパティが設定されており、こちらも year 列にフィルターが設定されているため、選択された year に応じて更新されます。
