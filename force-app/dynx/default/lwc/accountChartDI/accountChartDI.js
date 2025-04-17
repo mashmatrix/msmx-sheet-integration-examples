@@ -52,15 +52,6 @@ export default class AccountChartDI extends LightningElement {
           ]
         },
         options: {
-          plugins: {
-            legend: {
-              position: "top"
-            },
-            title: {
-              display: true,
-              text: "Chart.js Bar Chart"
-            }
-          },
           responsive: true,
           maintainAspectRatio: false,
           scales: {
