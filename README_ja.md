@@ -26,13 +26,13 @@ $ sf org create scratch -f config/project-scratch-def.json -a msmx-sheet-integra
 2. コマンドラインでMashmatrix Sheetのトライアルパッケージをインストールします
 
 ```sh
-$ sf package install --package 04tIT0000013SjPYAU -o msmx-sheet-integration -w 10
+$ sf package install --package 04tIT0000013SruYAE -o msmx-sheet-integration -w 10
 ```
 
 3. コマンドラインから Dynamic Interaction Component Example をインストールする。
 
 ```sh
-$ sf package install --package 04tdL0000008z7xQAA -o msmx-sheet-integration -w 10
+$ sf package install --package 04tdL0000009J6fQAE -o msmx-sheet-integration -w 10
 ```
 
 4. スクラッチ組織のデフォルトのユーザに必要な権限セットを割り当てます
@@ -77,7 +77,7 @@ $ sf org open -o msmx-sheet-integration -p /lightning/n/msmxSheet__MashmatrixShe
 
 13. 「Dynamic Interaction」タブにフォーカスし、画面の右上のメニューから「ページを編集」を選びます
 
-14. 左側のペインで最初と2番目の「Mashmatrix Sheet」コンポーネントを選択し、手順9でコピーした「Account/Contact」ブックのBook IDの値に置き換える。
+14. 左側のペインで最初と2番目の「Mashmatrix Sheet」コンポーネントを選択し、手順9でコピーした「Dynamic Interaction」ブックのBook IDの値に置き換える。
 
 15. 「Filter Control Integration」タブにフォーカスし、 画面の右上のメニューから「ページを編集」を選びます
 
@@ -133,13 +133,11 @@ $ sf org open -o msmx-sheet-integration -p /lightning/n/msmxSheet__MashmatrixShe
 
 ### Dynamic Interaction
 
-<img width="2055" alt="dynamic-interaction-screen" src="https://github.com/user-attachments/assets/4093abcd-1c67-4811-a6b2-bef9d30300ec">
+<img width="2055" alt="dynamic-interaction-screen" src="https://github.com/user-attachments/assets/3aa8dc84-5f63-413f-8180-8aa070313e92">
 
-「Dynamic Interaction」タブには、2つのMashmatrix Sheetコンポーネント、1つのカスタムマップコンポーネント、および1つのカスタムチャートコンポーネントが配置されています。
+「Dynamic Interaction」タブには、3つのMashmatrix Sheetコンポーネントと1つのカスタムチャートコンポーネントがページ上に配置されています。
 
-「Account Chart」コンポーネントは、最初のシートのセルにフォーカスすると、その取引先の総収益を表示します。
-
-「Account Map」コンポーネントは、最初のシート（左側）でセルにフォーカスしたり、レコードを選択したりすると、動的インタラクションイベントを受信し、それらをマップ上にプロットします。
-ユーザーが描画された取引先のマーカーをクリックすると、動的インタラクションイベントが発行されます。
-このイベントは 2番目のシートのparametersプロパティにaccountId={!Event.accountId}のような値を設定し、
-2番目のシートは設定された値に対応する取引先責任者レコードを一覧表示します。
+「Account Chart」コンポーネントは、最初のシートでレコードがフォーカスまたは選択されたときに、Accountごとにグループ化されたOpportunityの合計Amountを表示します。
+ユーザーがチャートのバーをクリックすると、accountId、startDate、endDate、yearといった属性を含むDynamic Interactionイベントが発行されます。
+その後、第2のシートに対しては、parametersプロパティに accountId={!Event.accountId}&startDate={!Event.startDate}&endDate={!Event.endDate} の値が設定されます。
+同様に、第3のシートには year={!Event.year} の値でparametersプロパティが設定されます。
