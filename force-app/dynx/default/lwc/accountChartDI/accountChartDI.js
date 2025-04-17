@@ -7,7 +7,7 @@ export default class AccountChartDI extends LightningElement {
   _recordId;
   chart;
   totalRevenue = 0;
-
+  annualData = [];
   @api
   get recordId() {
     return this._recordId;
@@ -35,6 +35,7 @@ export default class AccountChartDI extends LightningElement {
 
   initializeChart() {
     getAnnualRevenue({ recordId: this.recordId }).then((annualData) => {
+      this.annualData = annualData;
       const years = annualData.map((item) => item.year);
       const values = annualData.map((item) => item.amount);
       if (this.chart) {
@@ -48,7 +49,7 @@ export default class AccountChartDI extends LightningElement {
           labels: years,
           datasets: [
             {
-              label: "Total Amount",
+              label: "Opportunity amount",
               data: values,
               backgroundColor: "rgba(54, 162, 235, 0.6)"
             }
@@ -64,10 +65,10 @@ export default class AccountChartDI extends LightningElement {
           },
           onClick: (event, elements) => {
             if (elements.length > 0) {
-              const data = annualData[elements[0].index];
-              const startDate = data.startDate;
-              const endDate = data.endDate;
+              const data = this.annualData[elements[0].index];
               const year = data.year;
+              const startDate = `${year}-01-01`;
+              const endDate = `${year}-12-31`;
 
               const payload = {
                 accountId: this._recordId,
