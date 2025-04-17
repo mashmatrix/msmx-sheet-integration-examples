@@ -16,7 +16,6 @@ export default class AccountChartDI extends LightningElement {
   set recordId(value) {
     this._recordId = value;
     if (this.chart) {
-      this.chart.destroy();
       this.initializeChart();
     }
   }
@@ -38,6 +37,10 @@ export default class AccountChartDI extends LightningElement {
     getAnnualRevenue({ recordId: this.recordId }).then((annualData) => {
       const years = annualData.map((item) => item.year);
       const values = annualData.map((item) => item.amount);
+      if (this.chart) {
+        this.updateChart(years, values);
+        return;
+      }
       const ctx = this.template.querySelector("canvas");
       this.chart = new Chart(ctx, {
         type: "bar",
@@ -113,6 +116,14 @@ export default class AccountChartDI extends LightningElement {
 
         this.dynamicInteractionEvent("clickchart", payload);
       }
+    }
+  }
+
+  updateChart(years, values) {
+    if (this.chart) {
+      this.chart.data.labels = years;
+      this.chart.data.datasets[0].data = values;
+      this.chart.update();
     }
   }
 
