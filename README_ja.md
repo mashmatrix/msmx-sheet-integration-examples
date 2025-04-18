@@ -32,7 +32,7 @@ $ sf package install --package 04tIT0000013SruYAE -o msmx-sheet-integration -w 1
 3. コマンドラインから Dynamic Interaction Component Example をインストールする。
 
 ```sh
-$ sf package install --package 04tdL0000009J6fQAE -o msmx-sheet-integration -w 10
+$ sf package install --package 04tdL0000009JD7QAM -o msmx-sheet-integration -w 10
 ```
 
 4. スクラッチ組織のデフォルトのユーザに必要な権限セットを割り当てます
