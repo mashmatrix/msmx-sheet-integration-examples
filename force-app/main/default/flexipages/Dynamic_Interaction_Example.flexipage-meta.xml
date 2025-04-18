@@ -20,35 +20,18 @@
             </properties>
             <type>FlexipageServices</type>
         </targets>
-        <targets>
-            <mappings>
-                <name>recordId</name>
-                <value>{!Event.recordId}</value>
-            </mappings>
-            <mappings>
-                <name>recordIds</name>
-                <value>{!Event.recordIds}</value>
-            </mappings>
-            <method>updateProperties</method>
-            <name>flexipage:componentService</name>
-            <properties>
-                <name>componentIdentifier</name>
-                <value>dynx_accountMapDI</value>
-            </properties>
-            <type>FlexipageServices</type>
-        </targets>
     </events>
     <events>
-        <sourceName>dynx_accountMapDI</sourceName>
+        <sourceName>dynx_accountChartDI</sourceName>
         <sourceProperties>
             <name>eventName</name>
-            <value>selectmarker</value>
+            <value>clickchart</value>
         </sourceProperties>
         <sourceType>Component</sourceType>
         <targets>
             <mappings>
                 <name>parameters</name>
-                <value>accountId={!Event.accountId}</value>
+                <value>accountId={!Event.accountId}&amp;startDate={!Event.startDate}&amp;endDate={!Event.endDate}</value>
             </mappings>
             <method>updateProperties</method>
             <name>flexipage:componentService</name>
@@ -58,13 +41,30 @@
             </properties>
             <type>FlexipageServices</type>
         </targets>
+        <targets>
+            <mappings>
+                <name>title</name>
+                <value>Opportunity In {!Event.year}</value>
+            </mappings>
+            <mappings>
+                <name>parameters</name>
+                <value>year={!Event.year}</value>
+            </mappings>
+            <method>updateProperties</method>
+            <name>flexipage:componentService</name>
+            <properties>
+                <name>componentIdentifier</name>
+                <value>msmxSheet_sheetComponent3</value>
+            </properties>
+            <type>FlexipageServices</type>
+        </targets>
     </events>
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
                     <name>bookId</name>
-                    <value>a01BW00000KYkxmYAD</value>
+                    <value>a017200000bi2DmAAI</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>publishEvents</name>
@@ -82,7 +82,7 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>bookId</name>
-                    <value>a01BW00000KYkxmYAD</value>
+                    <value>a017200000bi2DmAAI</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>publishEvents</name>
@@ -90,7 +90,11 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>sheetId</name>
-                    <value>s2</value>
+                    <value>s3</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>title</name>
+                    <value>Opportunity Filter By Account</value>
                 </componentInstanceProperties>
                 <componentName>msmxSheet:sheetComponent</componentName>
                 <identifier>msmxSheet_sheetComponent2</identifier>
@@ -102,6 +106,9 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
+                <componentInstanceProperties>
+                    <name>recordId</name>
+                </componentInstanceProperties>
                 <componentName>dynx:accountChartDI</componentName>
                 <identifier>dynx_accountChartDI</identifier>
             </componentInstance>
@@ -112,8 +119,24 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
-                <componentName>dynx:accountMapDI</componentName>
-                <identifier>dynx_accountMapDI</identifier>
+                <componentInstanceProperties>
+                    <name>bookId</name>
+                    <value>a017200000bi2DmAAI</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>publishEvents</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>sheetId</name>
+                    <value>s2</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>title</name>
+                    <value>Opportunity Filter By Year</value>
+                </componentInstanceProperties>
+                <componentName>msmxSheet:sheetComponent</componentName>
+                <identifier>msmxSheet_sheetComponent3</identifier>
             </componentInstance>
         </itemInstances>
         <name>region3</name>
