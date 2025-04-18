@@ -25,6 +25,19 @@ public with sharing class AccountDynamicInteractionControllerTest {
             )
         });
         insert accounts;
+
+        List<Opportunity> opps = new List<Opportunity>();
+        for (Account acc : accounts) {
+            opps.add(new Opportunity(
+                Name = acc.Name + ' Opportunity',
+                StageName = 'Prospecting',
+                CloseDate = Date.today().addDays(30),
+                Amount = acc.AnnualRevenue / 10,
+                AccountId = acc.Id
+            ));
+        }
+        insert opps;
+
     }
     @IsTest
     static void testGetAccounts() {
@@ -38,8 +51,8 @@ public with sharing class AccountDynamicInteractionControllerTest {
     @IsTest 
     static void testGetAnnualRevenue() {
         Account account = [SELECT Id FROM Account WHERE Name = 'Test Account1'];
-        Decimal revenue = AccountDynamicInteractionController.getAnnualRevenue(account.Id);
-        System.AssertEquals(120000, revenue);
+        List<AccountDynamicInteractionController.AnnualRevenueDTO> annualRevenues = AccountDynamicInteractionController.getAnnualRevenue(account.Id);
+        System.assert(!annualRevenues.isEmpty());
     }
 
 }

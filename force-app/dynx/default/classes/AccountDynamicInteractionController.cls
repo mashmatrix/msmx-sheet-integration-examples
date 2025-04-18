@@ -34,12 +34,32 @@ public with sharing class AccountDynamicInteractionController {
   }
 
   @AuraEnabled
-  public static Decimal getAnnualRevenue(String recordId) {
-    List<Account> accounts = [
-      SELECT Id, AnnualRevenue
-      FROM Account
-      WHERE Id = :recordId
+  public static List<AnnualRevenueDTO> getAnnualRevenue(String recordId) {
+    List<AggregateResult> results = [
+      SELECT CALENDAR_YEAR(CloseDate) year, SUM(Amount) total
+      FROM Opportunity
+      WHERE AccountId = :recordId
+      GROUP BY CALENDAR_YEAR(CloseDate)
+      ORDER BY CALENDAR_YEAR(CloseDate)
     ];
-    return accounts.isEmpty() ? 0 : accounts[0].AnnualRevenue;
+
+    List<AnnualRevenueDTO> data = new List<AnnualRevenueDTO>();
+    for (AggregateResult agg : results) {
+      data.add(new AnnualRevenueDTO(agg));
+    }
+
+    return data;
+  }
+
+  public class AnnualRevenueDTO {
+    @AuraEnabled
+    public Integer year;
+    @AuraEnabled
+    public Decimal amount;
+
+    public AnnualRevenueDTO(AggregateResult agg) {
+      this.year = (Integer) agg.get('year');
+      this.amount = (Decimal) agg.get('total');
+    }
   }
 }

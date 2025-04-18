@@ -1,13 +1,13 @@
-import { LightningElement, api } from 'lwc';
-import { loadScript } from 'lightning/platformResourceLoader';
-import getAnnualRevenue from '@salesforce/apex/AccountDynamicInteractionController.getAnnualRevenue';
-import chartJs from '@salesforce/resourceUrl/MsmxChartJS';
+import { LightningElement, api } from "lwc";
+import { loadScript } from "lightning/platformResourceLoader";
+import getAnnualRevenue from "@salesforce/apex/AccountDynamicInteractionController.getAnnualRevenue";
+import chartJs from "@salesforce/resourceUrl/MsmxChartJS";
 
 export default class AccountChartDI extends LightningElement {
   _recordId;
   chart;
   totalRevenue = 0;
-
+  annualData = [];
   @api
   get recordId() {
     return this._recordId;
@@ -28,48 +28,109 @@ export default class AccountChartDI extends LightningElement {
       .then(() => {
         this.initializeChart();
       })
-      .catch(error => {
-        console.error('Error loading Chart.js:', error);
+      .catch((error) => {
+        console.error("Error loading Chart.js:", error);
       });
   }
 
   initializeChart() {
-    getAnnualRevenue({ recordId: this.recordId }).then(annualRevenue => {
+    getAnnualRevenue({ recordId: this.recordId }).then((annualData) => {
+      this.annualData = annualData;
+      const years = annualData.map((item) => item.year);
+      const values = annualData.map((item) => item.amount);
       if (this.chart) {
-        this.updateChart([annualRevenue]);
+        this.updateChart(years, values);
         return;
       }
-
-      const ctx = this.template.querySelector('canvas').getContext('2d');
+      const ctx = this.template.querySelector("canvas");
       this.chart = new Chart(ctx, {
-        type: 'bar',
+        type: "bar",
         data: {
-          labels: ['Total Revenue'],
+          labels: years,
           datasets: [
             {
-              label: 'Total Revenue',
-              data: [annualRevenue],
-              backgroundColor: 'rgba(54, 162, 235, 0.6)',
-            },
-          ],
+              label: "Opportunity amount",
+              data: values,
+              backgroundColor: "rgba(54, 162, 235, 0.6)"
+            }
+          ]
         },
         options: {
           responsive: true,
           maintainAspectRatio: false,
           scales: {
             y: {
-              beginAtZero: true,
-            },
+              beginAtZero: true
+            }
           },
-        },
+          onClick: (event, elements) => {
+            if (elements.length > 0) {
+              const data = this.annualData[elements[0].index];
+              const year = data.year;
+              const startDate = `${year}-01-01`;
+              const endDate = `${year}-12-31`;
+
+              const payload = {
+                accountId: this._recordId,
+                startDate: startDate,
+                endDate: endDate,
+                year: year
+              };
+              console.log(JSON.stringify(payload));
+              this.dynamicInteractionEvent("clickchart", payload);
+            }
+          }
+        }
+      });
+      ctx.addEventListener("click", (event) => {
+        this.clickableScales(ctx, event);
       });
     });
   }
 
-  updateChart(data) {
+  clickableScales(ctx, event) {
+    const xScale = this.chart.scales.x;
+    const top = xScale.top;
+    const bottom = xScale.bottom;
+    const left = xScale.left;
+    const labelWidth = xScale.width / xScale.ticks.length;
+
+    let rect = ctx.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+    for (let i = 0; i < xScale.ticks.length; i++) {
+      const labelLeft = left + labelWidth * i;
+      const labelRight = labelLeft + labelWidth;
+
+      if (x >= labelLeft && x <= labelRight && y >= top && y <= bottom) {
+        const year = Number(xScale.ticks[i].label);
+
+        const startDate = `${year}-01-01`;
+        const endDate = `${year}-12-31`;
+
+        const payload = {
+          accountId: this._recordId,
+          year,
+          startDate,
+          endDate
+        };
+
+        this.dynamicInteractionEvent("clickchart", payload);
+      }
+    }
+  }
+
+  updateChart(years, values) {
     if (this.chart) {
-      this.chart.data.datasets[0].data = data;
+      this.chart.data.labels = years;
+      this.chart.data.datasets[0].data = values;
       this.chart.update();
     }
+  }
+
+  dynamicInteractionEvent(name, detail) {
+    this.dispatchEvent(
+      new CustomEvent(name, { detail: detail, bubbles: true, composed: true })
+    );
   }
 }

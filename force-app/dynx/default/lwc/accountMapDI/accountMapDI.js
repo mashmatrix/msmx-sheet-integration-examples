@@ -22,8 +22,6 @@ export default class AccountMapDI extends LightningElement {
   set recordId(value) {
     if (value) {
       this._recordId = value;
-      const recordIds = [this._recordId];
-      this.handleSheetSelectRecords(recordIds);
     }
   }
 
