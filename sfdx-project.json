@@ -14,8 +14,8 @@
       ]
     },
     {
-      "versionName": "ver 1.4",
-      "versionNumber": "1.4.0.NEXT",
+      "versionName": "ver 1.5",
+      "versionNumber": "1.5.0.NEXT",
       "path": "./force-app/dynx/default",
       "default": true,
       "package": "Dynx Example",
@@ -32,6 +32,6 @@
     "Mashmatrix Sheet": "04t0K000001E4ll",
     "msmx-sheet-integration-examples@0.3.0-1": "04tA70000000UmuIAE",
     "Dynx Example": "0HodL0000000xZZSAY",
-    "Dynx Example@1.4.0-1": "04tdL0000009J6fQAE"
+    "Dynx Example@1.5.0-1": "04tdL0000009JD7QAM"
   }
 }
