@@ -26,7 +26,7 @@ $ sf org create scratch -f config/project-scratch-def.json -a msmx-sheet-integra
 2. Install Mashmatrix Sheet trial package from command line.
 
 ```sh
-$ sf package install --package 04tIT0000013SjPYAU -o msmx-sheet-integration -w 10
+$ sf package install --package 04tIT0000013SruYAE -o msmx-sheet-integration -w 10
 ```
 
 3. Install Dynamic Interaction Component Example from command line.
@@ -77,7 +77,7 @@ $ sf org open -o msmx-sheet-integration -p /lightning/n/msmxSheet__MashmatrixShe
 
 13. Focus on "Dynamic Interaction" tab, open "Edit Page" from right top menu.
 
-14. Select the first and second "Mashmatrix Sheet" component in left pane, replace "Book ID" value to the copied book Id of "Account/Contact" book in step 9.
+14. Select the first, second "Mashmatrix Sheet" component in left pane, and the third "Mashmatrix Sheet" component in right pane, replace "Book ID" value to the copied book Id of "Dynamic Interaction" book in step 9.
 
 15. Focus on "Filter Control Integration" tab, open "Edit Page" from right top menu.
 
@@ -133,12 +133,11 @@ The "Custom Event on Action Link" component will receive a custom event named "a
 
 ### Dynamic Interaction
 
-<img width="2055" alt="dynamic-interaction-screen" src="https://github.com/user-attachments/assets/4093abcd-1c67-4811-a6b2-bef9d30300ec">
+<img width="2055" alt="dynamic-interaction-screen" src="https://github.com/user-attachments/assets/3aa8dc84-5f63-413f-8180-8aa070313e92">
 
-On the "Dynamic Interaction" tab, there are two Mashmatrix Sheet components, one custom map component, and one custom chart component on the page.
+On the "Dynamic Interaction" tab, there are three Mashmatrix Sheet components and one custom chart component on the page.
 
-The "Account Chart" component will display the total revenue of the account when focusing on a cell in the first sheet.
-
-The "Account Map" component receives a dynamic interaction event when a cell is focused, or records are selected in the first sheet on the left, then plots them on the map.
-If the user clicks on the drawn account item, it will publish a dynamic interaction event, this event will proceed to set the paramaters property with a value like accountId={!Event.accountId} of the 2nd sheet,
-the 2nd sheet will proceed to list the contact records corresponding to the value set in the parameters property
+The "Account Chart" component will display the total amount from Opportunities grouped by Account when a record is focused or selected in the first sheet.
+When clicking on a bar in the chart, it will publish a dynamic interaction event that includes the properties (accountId, startDate, endDate, year).
+The dynamic interaction event will set the `parameters` property of the 2nd sheet to the value `accountId={!Event.accountId}&startDate={!Event.startDate}&endDate={!Event.endDate}`, since the filter is set to the closeDate and accountId columns, the 2nd sheet will refresh according to the selected accountId and startDate, endDate
+Similarly, it will set the `parameters` property for the 3rd sheet to the value `year={!Event.year}`, since the filter of the 3rd sheet is set to the year column, the 3rd sheet will be refreshed according to the selected year
