@@ -26,7 +26,7 @@ $ sf org create scratch -f config/project-scratch-def.json -a msmx-sheet-integra
 2. コマンドラインでMashmatrix Sheetのトライアルパッケージをインストールします
 
 ```sh
-$ sf package install --package 04tIT0000013T4XYAU -o msmx-sheet-integration -w 10
+$ sf package install --package 04tIT0000013T56YAE -o msmx-sheet-integration -w 10
 ```
 
 3. コマンドラインから Dynamic Interaction Component Example をインストールする。
