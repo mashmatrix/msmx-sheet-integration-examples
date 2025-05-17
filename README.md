@@ -26,7 +26,7 @@ $ sf org create scratch -f config/project-scratch-def.json -a msmx-sheet-integra
 2. Install Mashmatrix Sheet trial package from command line.
 
 ```sh
-$ sf package install --package 04tIT0000013T56YAE -o msmx-sheet-integration -w 10
+$ sf package install --package 04tIT0000013THjYAM -o msmx-sheet-integration -w 10
 ```
 
 3. Install Dynamic Interaction Component Example from command line.
@@ -56,9 +56,9 @@ $ sf org assign permset --name Mashmatrix_Sheet_Integration_Examples -o msmx-she
 7. Load example data using [SFDX migration automatic](https://github.com/stomita/sfdx-migration-automatic) plugin
 
 ```sh
-$ sfdx plugins:install sfdx-migration-automatic
-$ sfdx automig:load --inputdir data/records -u msmx-sheet-integration
-$ sfdx automig:load --inputdir data/books -u msmx-sheet-integration
+$ sf plugins install sfdx-migration-automatic
+$ sf automig load --inputdir data/records -u msmx-sheet-integration
+$ sf automig load --inputdir data/books -u msmx-sheet-integration
 ```
 
 8. Open Mashmatrix Sheet to confirm the loaded books/records are accessible.
@@ -110,7 +110,7 @@ so it will list all contact records belonging to selected account.
 
 On "Filter Condition Integration" tab, there are two components in the page.
 One is the custom control component, which publishes `setParameters` message according to the control input by the user.
-Another is a Mashmatrix Sheet component that lists accomodations data in the org, which references parameter valueｓ in its filters.
+Another is a Mashmatrix Sheet component that lists accomodations data in the org, which references parameter value ｓ in its filters.
 By changing the control input in the control component, the sheet component will be automatically refreshed to list the records matching with the inputted conditions.
 
 To reference parameter values in filters, please check the ”[Reference Value](https://docs.mashmatrix.com/mashmatrix-sheet/functions_about_displaying_data/reference_value)" page in user guide.

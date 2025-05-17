@@ -1,17 +1,17 @@
 #!/bin/sh
 
-sfdx force:org:create -f config/project-scratch-def.json -a msmx-sheet-integration -w 10
+sf org create scratch -f config/project-scratch-def.json -a msmx-sheet-integration -c -w 10
 
-sfdx force:package:install --package 04t0K000001E4ll -u msmx-sheet-integration -w 10
-sfdx force:user:permset:assign --permsetname msmxSheet__MashmatrixSheetUser -u msmx-sheet-integration
-sfdx force:user:permset:assign --permsetname msmxSheet__MashmatrixSheetAdministrator -u msmx-sheet-integration
+sf package install --package 04tIT0000013THjYAM -o msmx-sheet-integration -w 10
+sf package install --package 04tdL0000009JD7QAM -o msmx-sheet-integration -w 10
 
-sfdx force:source:push -u msmx-sheet-integration
-sfdx force:user:permset:assign --permsetname Mashmatrix_Sheet_Integration_Examples -u msmx-sheet-integration
+sf org assign permset --name msmxSheet__MashmatrixSheetUser --name msmxSheet__MashmatrixSheetAdministrator -o msmx-sheet-integration
 
-sfdx plugins:install sfdx-migration-automatic
+sf project deploy start -d force-app/main -o msmx-sheet-integration
+sf org assign permset --name Mashmatrix_Sheet_Integration_Examples -o msmx-sheet-integration
 
-sfdx automig:load --inputdir data/records -u msmx-sheet-integration
-sfdx automig:load --inputdir data/books -u msmx-sheet-integration
+sf plugins install sfdx-migration-automatic
+sf automig load --inputdir data/records -u msmx-sheet-integration
+sf automig load --inputdir data/books -u msmx-sheet-integration
 
-sfdx force:org:open -u msmx-sheet-integration -p /lightning/n/msmxSheet__MashmatrixSheet
+sf org open -o msmx-sheet-integration -p /lightning/n/msmxSheet__MashmatrixSheet
