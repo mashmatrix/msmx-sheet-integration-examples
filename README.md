@@ -56,9 +56,9 @@ $ sf org assign permset --name Mashmatrix_Sheet_Integration_Examples -o msmx-she
 7. Load example data using [SFDX migration automatic](https://github.com/stomita/sfdx-migration-automatic) plugin
 
 ```sh
-$ sfdx plugins:install sfdx-migration-automatic
-$ sfdx automig:load --inputdir data/records -u msmx-sheet-integration
-$ sfdx automig:load --inputdir data/books -u msmx-sheet-integration
+$ sf plugins install sfdx-migration-automatic
+$ sf automig load --inputdir data/records -u msmx-sheet-integration
+$ sf automig load --inputdir data/books -u msmx-sheet-integration
 ```
 
 8. Open Mashmatrix Sheet to confirm the loaded books/records are accessible.

@@ -56,9 +56,9 @@ $ sf org assign permset --name Mashmatrix_Sheet_Integration_Examples -o msmx-she
 7. デモ用のデータを[SFDX migration automatic](https://github.com/stomita/sfdx-migration-automatic) プラグインを用いてロードします
 
 ```sh
-$ sfdx plugins:install sfdx-migration-automatic
-$ sfdx automig:load --inputdir data/records -u msmx-sheet-integration
-$ sfdx automig:load --inputdir data/books -u msmx-sheet-integration
+$ sf plugins install sfdx-migration-automatic
+$ sf automig load --inputdir data/records -u msmx-sheet-integration
+$ sf automig load --inputdir data/books -u msmx-sheet-integration
 ```
 
 8. Mashmatrix Sheet アプリを開いてロードしたブック及びレコードにアクセスできることを確かめます
