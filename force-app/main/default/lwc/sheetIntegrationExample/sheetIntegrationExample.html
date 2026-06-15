@@ -1,0 +1,144 @@
+<template>
+  <lightning-card title="Sheet Integration Example">
+    <div class="slds-p-around_medium">
+      <div class="slds-grid slds-gutters">
+        <!-- Left Panel -->
+        <div class="slds-col slds-size_1-of-4">
+          <!-- Record Context -->
+          <lightning-card title="Record Context">
+            <div class="slds-p-around_small">
+              <lightning-combobox
+                label="Record"
+                value={recordId}
+                options={recordOptions}
+                onchange={handleRecordChange}
+              >
+              </lightning-combobox>
+
+              <div class="slds-m-top_small">
+                <lightning-formatted-text value={recordId}>
+                </lightning-formatted-text>
+              </div>
+            </div>
+          </lightning-card>
+
+          <!-- Book / Sheet -->
+          <lightning-card title="Book / Sheet" class="slds-m-top_medium">
+            <div class="slds-p-around_small">
+              <lightning-combobox
+                label="Book"
+                value={bookId}
+                options={bookOptions}
+                onchange={handleBookChange}
+              >
+              </lightning-combobox>
+
+              <lightning-combobox
+                class="slds-m-top_small"
+                label="Sheet"
+                value={sheetId}
+                options={sheetOptions}
+                onchange={handleSheetChange}
+              >
+              </lightning-combobox>
+            </div>
+          </lightning-card>
+
+          <!-- Runtime Parameters -->
+          <lightning-card title="Runtime Parameters" class="slds-m-top_medium">
+            <div class="slds-p-around_small">
+              <lightning-combobox
+                label="Scenario"
+                value={scenario}
+                options={scenarioOptions}
+                onchange={handleScenarioChange}
+              >
+              </lightning-combobox>
+
+              <lightning-combobox
+                class="slds-m-top_small"
+                label="Region"
+                value={region}
+                options={regionOptions}
+                onchange={handleRegionChange}
+              >
+              </lightning-combobox>
+
+              <lightning-combobox
+                class="slds-m-top_small"
+                label="Theme"
+                value={theme}
+                options={themeOptions}
+                onchange={handleThemeChange}
+              >
+              </lightning-combobox>
+
+              <lightning-input
+                class="slds-m-top_small"
+                type="checkbox"
+                label="Enable Recommendation"
+                checked={enableRecommendation}
+                onchange={handleRecommendationChange}
+              >
+              </lightning-input>
+
+              <lightning-input
+                type="checkbox"
+                label="Enable Advanced Actions"
+                checked={enableAdvancedActions}
+                onchange={handleAdvancedActionsChange}
+              >
+              </lightning-input>
+
+              <lightning-button
+                class="slds-m-top_medium"
+                variant="brand"
+                label="Apply Parameters"
+                onclick={handleApplyParameters}
+              >
+              </lightning-button>
+            </div>
+          </lightning-card>
+        </div>
+
+        <!-- Right Panel -->
+        <div class="slds-col slds-size_3-of-4">
+          <!-- Sheet -->
+          <lightning-card title="Sheet">
+            <div class="sheet-container">
+              <msmxsheet-sheet-component
+                title="Custom Code Example"
+                book-id={bookId}
+                sheet-id={sheetId}
+                record-id={recordId}
+                height="560px"
+                publish-events
+                component-id={componentId}
+                parameters={initialParameters}
+                onselectrecord={handleSelectRecord}
+              >
+              </msmxsheet-sheet-component>
+            </div>
+          </lightning-card>
+
+          <!-- Event Log -->
+          <lightning-card title="Event Log" class="slds-m-top_medium">
+            <div class="event-log">
+              <template if:true={eventLogs.length}>
+                <template for:each={eventLogs} for:item="eventLog">
+                  <div key={eventLog.id} class="slds-p-vertical_x-small">
+                    {eventLog.message}
+                  </div>
+                </template>
+              </template>
+
+              <template if:false={eventLogs.length}>
+                <div class="slds-text-color_weak">No events yet.</div>
+              </template>
+            </div>
+          </lightning-card>
+        </div>
+      </div>
+    </div>
+  </lightning-card>
+</template>
