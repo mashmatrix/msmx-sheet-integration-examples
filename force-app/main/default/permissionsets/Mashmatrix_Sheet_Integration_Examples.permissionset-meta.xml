@@ -80,4 +80,8 @@
         <tab>Message_Debug</tab>
         <visibility>Visible</visibility>
     </tabSettings>
+    <tabSettings>
+        <tab>Sheet_Playground</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
 </PermissionSet>
