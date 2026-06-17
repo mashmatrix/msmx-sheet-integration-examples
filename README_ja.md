@@ -145,6 +145,8 @@ $ sf org open -o msmx-sheet-integration -p /lightning/n/msmxSheet__MashmatrixShe
 
 ### Sheet Playground (カスタムコード統合)
 
+<img width="1920" height="1688" alt="sheet-playground" src="https://github.com/user-attachments/assets/59834dda-4fe7-461a-8dde-7f35f843f39b" />
+
 このサンプルは、カスタム Lightning Web コンポーネントのテンプレート内で **Mashmatrix Sheet LWC コンポーネント (`<msmx-sheet-sheet>`)** を直接埋め込み、制御する方法を示しています。
 
 App Builder の Dynamic Interaction（動的インタラクション）に依存せず、標準の LWC プロパティバインディングとイベントハンドリングを使用して統合を行う手法を解説します。
