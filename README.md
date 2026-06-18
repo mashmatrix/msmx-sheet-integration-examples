@@ -91,6 +91,8 @@ $ sf org open -o msmx-sheet-integration -p /lightning/n/msmxSheet__MashmatrixShe
 
 20. Select "Mashmatrix Sheet" component in left pane, replace "Book ID" value to the copied book Id of "Custom Event" book in step 9.
 
+21. Open "Sheet Playground" tab. This sample is already wired as a self-contained custom component, so you can use it directly without arranging the page in App Builder.
+
 ## Examples
 
 ### Map Integration
@@ -141,3 +143,28 @@ The "Account Chart" component will display the total amount from Opportunities g
 When clicking on a bar in the chart, it will publish a dynamic interaction event that includes the properties (accountId, startDate, endDate, year).
 The dynamic interaction event will set the `parameters` property of the 2nd sheet to the value `accountId={!Event.accountId}&startDate={!Event.startDate}&endDate={!Event.endDate}`, since the filter is set to the closeDate and accountId columns, the 2nd sheet will refresh according to the selected accountId and startDate, endDate
 Similarly, it will set the `parameters` property for the 3rd sheet to the value `year={!Event.year}`, since the filter of the 3rd sheet is set to the year column, the 3rd sheet will be refreshed according to the selected year
+
+### Sheet Playground (Custom Code Integration)
+
+<img width="1920" height="1688" alt="sheet-playground" src="https://github.com/user-attachments/assets/3eb61ff9-e230-4ed7-a8d5-6088f7112cce" />
+
+This sample demonstrates how to embed and control the **Mashmatrix Sheet LWC component (`<msmx-sheet-sheet>`)** directly within a custom Lightning Web Component's template. 
+
+Unlike Dynamic Interaction which relies on App Builder configuration, this approach uses standard LWC property binding and event handling.
+
+The left panel (Control Surface) lets you:
+- switch the active book and sheet
+- edit draft settings for the component
+- apply staged settings with a dedicated action button
+- toggle `publish-events`
+- set the sheet height as a CSS value such as `500px` or `80vh`
+- change the context record ID
+- use the currently selected record as the context record
+
+**Technical highlights in this sample:**
+- **Component Embedding:** Usage of `<msmx-sheet-sheet>` in HTML.
+- **Property Binding:** Dynamically passing `book-id`, `sheet-id`, `parameters`, and `context-record-id` from JavaScript.
+- **Event Handling:** Capturing the `selectrecord` event to retrieve selected record IDs directly in the parent component.
+- **Manual Application:** Using a "Draft vs Applied" state pattern to control when the Sheet component should refresh.
+
+When the page loads, the component automatically selects the first available book. The sheet is left unselected until you choose one, because some books may not need a default sheet.

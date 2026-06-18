@@ -58,6 +58,7 @@
         <allowRead>true</allowRead>
         <modifyAllRecords>false</modifyAllRecords>
         <object>Accommodation__c</object>
+        <viewAllFields>false</viewAllFields>
         <viewAllRecords>false</viewAllRecords>
     </objectPermissions>
     <tabSettings>
@@ -78,6 +79,10 @@
     </tabSettings>
     <tabSettings>
         <tab>Message_Debug</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+    <tabSettings>
+        <tab>Sheet_Playground</tab>
         <visibility>Visible</visibility>
     </tabSettings>
 </PermissionSet>

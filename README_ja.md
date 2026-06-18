@@ -91,6 +91,10 @@ $ sf org open -o msmx-sheet-integration -p /lightning/n/msmxSheet__MashmatrixShe
 
 20. 左ペインにある Mashmatrix Sheet コンポーネントを選び、「Book ID」プロパティの値をステップ 9 でメモしておいた「Custom Event」ブックの ID の値に置き換えます
 
+21. 「Sheet Playground」タブを開きます。
+
+このサンプルは自己完結型のカスタムコンポーネントとして実装されているため、App Builder でのページ配置や設定を行うことなく、すぐに利用できます。
+
 ## サンプルの解説
 
 ### Map Integration
@@ -142,3 +146,28 @@ $ sf org open -o msmx-sheet-integration -p /lightning/n/msmxSheet__MashmatrixShe
 この Dynamic Interaction イベントは、第 2 のシートの parameters プロパティに accountId={!Event.accountId}&startDate={!Event.startDate}&endDate={!Event.endDate} という値を設定します。
 第 2 のシートでは、フィルターが closeDate と accountId 列に設定されているため、選択された accountId および startDate、endDate に基づいて自動的に更新されます。
 同様に、第 3 のシートには year={!Event.year} の値で parameters プロパティが設定されており、こちらも year 列にフィルターが設定されているため、選択された year に応じて更新されます。
+
+### Sheet Playground (カスタムコード統合)
+
+<img width="1920" height="1688" alt="sheet-playground" src="https://github.com/user-attachments/assets/59834dda-4fe7-461a-8dde-7f35f843f39b" />
+
+このサンプルは、カスタム Lightning Web コンポーネントのテンプレート内で **Mashmatrix Sheet LWC コンポーネント (`<msmx-sheet-sheet>`)** を直接埋め込み、制御する方法を示しています。
+
+App Builder の Dynamic Interaction（動的インタラクション）に依存せず、標準の LWC プロパティバインディングとイベントハンドリングを使用して統合を行う手法を解説します。
+
+左ペイン（コントロールパネル）でできること:
+- book / sheet を切り替える
+- コンポーネントの draft 設定を編集する
+- `Apply Settings` ボタンで変更内容を反映する
+- `publish-events` を切り替える
+- sheet の高さを `500px` や `80vh` のような CSS 値で指定する
+- context record ID を変更する
+- 選択中のレコードを context record に反映する
+
+**技術的なポイント:**
+- **コンポーネントの埋め込み:** HTML での `<msmx-sheet-sheet>` の使用。
+- **プロパティバインディング:** `book-id`、`sheet-id`、`parameters`、`context-record-id` を JavaScript から動的に渡す方法。
+- **イベントハンドリング:** `selectrecord` イベントをキャプチャして、選択されたレコード ID を親コンポーネントで直接取得する方法。
+- **設定の反映制御:** 「Draft（下書き）」と「Applied（適用済み）」の状態を使い分け、任意のタイミングでシートを更新するパターン。
+
+ページ表示時には、取得できる最初の book が自動選択されます。sheet は null のまま開始できるようにしているため、自動では選択しません。
