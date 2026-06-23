@@ -164,13 +164,6 @@ export default class SheetPlayground extends LightningElement {
     });
   }
 
-  handleComponentIdChange(event) {
-    this.draft.componentId = event.detail.value;
-    this.addEventLog("Component ID draft changed", this.logLevels.INFO, {
-      componentId: this.draft.componentId
-    });
-  }
-
   handleComponentTitleChange(event) {
     this.draft.title = event.detail.value;
     this.addEventLog("Component title draft changed", this.logLevels.INFO, {
@@ -234,9 +227,12 @@ export default class SheetPlayground extends LightningElement {
 
   handleApplySettings() {
     this.applied = { ...this.draft };
-    this.applied.contextRecordId = this.draft.contextRecordId || this.recordId || "";
+    this.applied.contextRecordId =
+      this.draft.contextRecordId || this.recordId || "";
 
-    this.addEventLog("Settings applied", this.logLevels.INFO, { ...this.applied });
+    this.addEventLog("Settings applied", this.logLevels.INFO, {
+      ...this.applied
+    });
   }
 
   handleClearLog() {

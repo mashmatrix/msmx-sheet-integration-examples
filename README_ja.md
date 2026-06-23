@@ -151,7 +151,7 @@ $ sf org open -o msmx-sheet-integration -p /lightning/n/msmxSheet__MashmatrixShe
 
 <img width="1920" height="1688" alt="sheet-playground" src="https://github.com/user-attachments/assets/59834dda-4fe7-461a-8dde-7f35f843f39b" />
 
-このサンプルは、カスタム Lightning Web コンポーネントのテンプレート内で **Mashmatrix Sheet LWC コンポーネント (`<msmx-sheet-sheet>`)** を直接埋め込み、制御する方法を示しています。
+このサンプルは、カスタム Lightning Web コンポーネントのテンプレート内で **Mashmatrix Sheet LWC コンポーネント (`<msmxsheet-sheet-component>`)** を直接埋め込み、制御する方法を示しています。
 
 App Builder の Dynamic Interaction（動的インタラクション）に依存せず、標準の LWC プロパティバインディングとイベントハンドリングを使用して統合を行う手法を解説します。
 
@@ -165,7 +165,7 @@ App Builder の Dynamic Interaction（動的インタラクション）に依存
 - 選択中のレコードを context record に反映する
 
 **技術的なポイント:**
-- **コンポーネントの埋め込み:** HTML での `<msmx-sheet-sheet>` の使用。
+- **コンポーネントの埋め込み:** HTML での `<msmxsheet-sheet-component>` の使用。
 - **プロパティバインディング:** `book-id`、`sheet-id`、`parameters`、`context-record-id` を JavaScript から動的に渡す方法。
 - **イベントハンドリング:** `selectrecord` イベントをキャプチャして、選択されたレコード ID を親コンポーネントで直接取得する方法。
 - **設定の反映制御:** 「Draft（下書き）」と「Applied（適用済み）」の状態を使い分け、任意のタイミングでシートを更新するパターン。

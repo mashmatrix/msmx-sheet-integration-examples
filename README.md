@@ -148,7 +148,7 @@ Similarly, it will set the `parameters` property for the 3rd sheet to the value 
 
 <img width="1920" height="1688" alt="sheet-playground" src="https://github.com/user-attachments/assets/3eb61ff9-e230-4ed7-a8d5-6088f7112cce" />
 
-This sample demonstrates how to embed and control the **Mashmatrix Sheet LWC component (`<msmx-sheet-sheet>`)** directly within a custom Lightning Web Component's template. 
+This sample demonstrates how to embed and control the **Mashmatrix Sheet LWC component (`<msmxsheet-sheet-component>`)** directly within a custom Lightning Web Component's template. 
 
 Unlike Dynamic Interaction which relies on App Builder configuration, this approach uses standard LWC property binding and event handling.
 
@@ -162,7 +162,7 @@ The left panel (Control Surface) lets you:
 - use the currently selected record as the context record
 
 **Technical highlights in this sample:**
-- **Component Embedding:** Usage of `<msmx-sheet-sheet>` in HTML.
+- **Component Embedding:** Usage of `<msmxsheet-sheet-component>` in HTML.
 - **Property Binding:** Dynamically passing `book-id`, `sheet-id`, `parameters`, and `context-record-id` from JavaScript.
 - **Event Handling:** Capturing the `selectrecord` event to retrieve selected record IDs directly in the parent component.
 - **Manual Application:** Using a "Draft vs Applied" state pattern to control when the Sheet component should refresh.
