@@ -3,7 +3,7 @@ import getBooks from "@salesforce/apex/SheetPlaygroundController.getBooks";
 import getSheets from "@salesforce/apex/SheetPlaygroundController.getSheets";
 
 const DEFAULT_COMPONENT_ID = "sheet-integration-example";
-const DEFAULT_COMPONENT_TITLE = "Custom Code Example";
+const DEFAULT_COMPONENT_TITLE = "Example";
 const DEFAULT_COMPONENT_HEIGHT = "500px";
 
 export default class SheetPlayground extends LightningElement {
