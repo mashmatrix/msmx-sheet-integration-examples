@@ -166,7 +166,7 @@ App Builder の Dynamic Interaction（動的インタラクション）に依存
 
 **技術的なポイント:**
 - **コンポーネントの埋め込み:** HTML での `<msmxsheet-sheet-component>` の使用。
-- **プロパティバインディング:** `book-id`、`sheet-id`、`parameters`、`context-record-id` を JavaScript から動的に渡す方法。
+- **プロパティバインディング:** `book-id`、`sheet-id`、`parameters`、`record-id` を JavaScript から動的に渡す方法。
 - **イベントハンドリング:** `selectrecord` イベントをキャプチャして、選択されたレコード ID を親コンポーネントで直接取得する方法。
 - **設定の反映制御:** 「Draft（下書き）」と「Applied（適用済み）」の状態を使い分け、任意のタイミングでシートを更新するパターン。
 

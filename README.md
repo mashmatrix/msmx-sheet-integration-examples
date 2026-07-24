@@ -163,7 +163,7 @@ The left panel (Control Surface) lets you:
 
 **Technical highlights in this sample:**
 - **Component Embedding:** Usage of `<msmxsheet-sheet-component>` in HTML.
-- **Property Binding:** Dynamically passing `book-id`, `sheet-id`, `parameters`, and `context-record-id` from JavaScript.
+- **Property Binding:** Dynamically passing `book-id`, `sheet-id`, `parameters`, and `record-id` from JavaScript.
 - **Event Handling:** Capturing the `selectrecord` event to retrieve selected record IDs directly in the parent component.
 - **Manual Application:** Using a "Draft vs Applied" state pattern to control when the Sheet component should refresh.
 
