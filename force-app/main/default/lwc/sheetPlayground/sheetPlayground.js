@@ -2,12 +2,19 @@ import { LightningElement, api, wire } from "lwc";
 import getBooks from "@salesforce/apex/SheetPlaygroundController.getBooks";
 import getSheets from "@salesforce/apex/SheetPlaygroundController.getSheets";
 
-const DEFAULT_COMPONENT_ID = "sheet-integration-example";
+const DEFAULT_COMPONENT_ID_PREFIX = "sheet-integration-example";
 const DEFAULT_COMPONENT_TITLE = "Example";
 const DEFAULT_COMPONENT_HEIGHT = "500px";
+let nextComponentInstanceId = 0;
+
+const createDefaultComponentId = () =>
+  `${DEFAULT_COMPONENT_ID_PREFIX}-${Date.now().toString(
+    36
+  )}-${++nextComponentInstanceId}`;
 
 export default class SheetPlayground extends LightningElement {
   _recordId;
+  defaultComponentId = createDefaultComponentId();
 
   bookOptions = [];
   sheetOptions = [];
@@ -16,7 +23,7 @@ export default class SheetPlayground extends LightningElement {
   draft = {
     bookId: "",
     sheetId: "",
-    componentId: DEFAULT_COMPONENT_ID,
+    componentId: this.defaultComponentId,
     title: DEFAULT_COMPONENT_TITLE,
     height: DEFAULT_COMPONENT_HEIGHT,
     publishEvents: true,
@@ -27,8 +34,8 @@ export default class SheetPlayground extends LightningElement {
   applied = {
     bookId: "",
     sheetId: "",
-    componentId: DEFAULT_COMPONENT_ID,
-    title: DEFAULT_COMPONENT_TITLE,
+    componentId: this.defaultComponentId,
+    title: "",
     height: DEFAULT_COMPONENT_HEIGHT,
     publishEvents: true,
     parameters: "",
@@ -81,22 +88,6 @@ export default class SheetPlayground extends LightningElement {
         label: book.Name,
         value: book.Id
       }));
-
-      const selectedBookId =
-        this.bookOptions.find((option) => option.value === this.draft.bookId)
-          ?.value ||
-        this.bookOptions[0]?.value ||
-        "";
-
-      if (selectedBookId) {
-        this.draft.bookId = selectedBookId;
-
-        if (!this.applied.bookId) {
-          this.applied.bookId = selectedBookId;
-        }
-
-        this.loadSheets(selectedBookId);
-      }
     } else if (error) {
       this.bookOptions = [];
       this.addEventLog(

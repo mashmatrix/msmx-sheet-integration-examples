@@ -4,6 +4,10 @@
         <application>Mashmatrix_Sheet_Integration_Examples</application>
         <visible>true</visible>
     </applicationVisibilities>
+    <classAccesses>
+        <apexClass>SheetPlaygroundController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
     <fieldPermissions>
         <editable>true</editable>
         <field>Accommodation__c.Address__c</field>

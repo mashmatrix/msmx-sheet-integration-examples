@@ -26,7 +26,7 @@ $ sf org create scratch -f config/project-scratch-def.json -a msmx-sheet-integra
 2. コマンドラインで Mashmatrix Sheet のトライアルパッケージをインストールします
 
 ```sh
-$ sf package install --package 04tIT0000013THjYAM -o msmx-sheet-integration -w 10
+$ sf package install --package 04tdL000000kiIzQAI -o msmx-sheet-integration -w 10
 ```
 
 3. コマンドラインから Dynamic Interaction Component Example をインストールする。
@@ -166,8 +166,12 @@ App Builder の Dynamic Interaction（動的インタラクション）に依存
 
 **技術的なポイント:**
 - **コンポーネントの埋め込み:** HTML での `<msmxsheet-sheet-component>` の使用。
-- **プロパティバインディング:** `book-id`、`sheet-id`、`parameters`、`record-id` を JavaScript から動的に渡す方法。
+- **プロパティバインディング:** `book-id`、`sheet-id`、`component-id`、`parameters`、`record-id` を JavaScript から動的に渡す方法。
 - **イベントハンドリング:** `selectrecord` イベントをキャプチャして、選択されたレコード ID を親コンポーネントで直接取得する方法。
 - **設定の反映制御:** 「Draft（下書き）」と「Applied（適用済み）」の状態を使い分け、任意のタイミングでシートを更新するパターン。
 
-ページ表示時には、取得できる最初の book が自動選択されます。sheet は null のまま開始できるようにしているため、自動では選択しません。
+ページ表示時には、book と sheet は選択されていません。book と sheet を選択し、`Apply Settings` をクリックすると、埋め込まれた sheet component に反映されます。
+
+Playground の Component ID フィールドは読み取り専用です。各 Playground インスタンスごとに一意の `component-id` が自動生成されるため、同じページに複数配置しても同じ sheet component identifier を共有しません。
+
+管理者以外のユーザでテストする場合は、Book ピッカーに表示されるように、対象のブックをそのユーザに共有してください。

@@ -26,7 +26,7 @@ $ sf org create scratch -f config/project-scratch-def.json -a msmx-sheet-integra
 2. Install Mashmatrix Sheet trial package from command line.
 
 ```sh
-$ sf package install --package 04tIT0000013THjYAM -o msmx-sheet-integration -w 10
+$ sf package install --package 04tdL000000kiIzQAI -o msmx-sheet-integration -w 10
 ```
 
 3. Install Dynamic Interaction Component Example from command line.
@@ -148,7 +148,7 @@ Similarly, it will set the `parameters` property for the 3rd sheet to the value 
 
 <img width="1920" height="1688" alt="sheet-playground" src="https://github.com/user-attachments/assets/3eb61ff9-e230-4ed7-a8d5-6088f7112cce" />
 
-This sample demonstrates how to embed and control the **Mashmatrix Sheet LWC component (`<msmxsheet-sheet-component>`)** directly within a custom Lightning Web Component's template. 
+This sample demonstrates how to embed and control the **Mashmatrix Sheet LWC component (`<msmxsheet-sheet-component>`)** directly within a custom Lightning Web Component's template.
 
 Unlike Dynamic Interaction which relies on App Builder configuration, this approach uses standard LWC property binding and event handling.
 
@@ -163,8 +163,12 @@ The left panel (Control Surface) lets you:
 
 **Technical highlights in this sample:**
 - **Component Embedding:** Usage of `<msmxsheet-sheet-component>` in HTML.
-- **Property Binding:** Dynamically passing `book-id`, `sheet-id`, `parameters`, and `record-id` from JavaScript.
+- **Property Binding:** Dynamically passing `book-id`, `sheet-id`, `component-id`, `parameters`, and `record-id` from JavaScript.
 - **Event Handling:** Capturing the `selectrecord` event to retrieve selected record IDs directly in the parent component.
 - **Manual Application:** Using a "Draft vs Applied" state pattern to control when the Sheet component should refresh.
 
-When the page loads, the component automatically selects the first available book. The sheet is left unselected until you choose one, because some books may not need a default sheet.
+When the page loads, no book or sheet is selected. Choose a book and sheet, then click Apply Settings to update the embedded sheet component.
+
+The Component ID field is read-only in the playground. A unique `component-id` is generated for each playground instance so multiple instances can be placed on the same page without sharing the same sheet component identifier.
+
+For non-admin testing, make sure the target books are shared with the testing user so they appear in the Book picker.
