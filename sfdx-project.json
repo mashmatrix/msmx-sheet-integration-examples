@@ -2,7 +2,7 @@
   "packageDirectories": [
     {
       "path": "./force-app/main/default",
-      "default": false,
+      "default": true,
       "package": "msmx-sheet-integration-examples",
       "versionName": "ver 0.3",
       "versionNumber": "0.3.0.NEXT",
@@ -10,6 +10,9 @@
       "dependencies": [
         {
           "package": "Mashmatrix Sheet"
+        },
+        {
+          "package": "Dynx Example@1.5.0-1"
         }
       ]
     },
@@ -17,7 +20,7 @@
       "versionName": "ver 1.5",
       "versionNumber": "1.5.0.NEXT",
       "path": "./force-app/dynx/default",
-      "default": true,
+      "default": false,
       "package": "Dynx Example",
       "versionDescription": "",
       "ancestorVersion": "HIGHEST"
@@ -29,9 +32,10 @@
   "sourceApiVersion": "66.0",
   "packageAliases": {
     "msmx-sheet-integration-examples": "0HoA70000000006KAA",
-    "Mashmatrix Sheet": "04t0K000001E4ll",
+    "Mashmatrix Sheet": "04tdL000000ndD7QAI",
     "msmx-sheet-integration-examples@0.3.0-1": "04tA70000000UmuIAE",
     "Dynx Example": "0HodL0000000xZZSAY",
-    "Dynx Example@1.5.0-1": "04tdL0000009JD7QAM"
+    "Dynx Example@1.5.0-1": "04tdL0000009JD7QAM",
+    "msmx-sheet-integration-examples@0.3.0-2": "04tNn000001QiWHIA0"
   }
 }
