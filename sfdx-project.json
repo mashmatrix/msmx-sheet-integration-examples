@@ -26,7 +26,7 @@
   "name": "msmx-sheet-integration-examples",
   "namespace": "",
   "sfdcLoginUrl": "https://login.salesforce.com",
-  "sourceApiVersion": "57.0",
+  "sourceApiVersion": "66.0",
   "packageAliases": {
     "msmx-sheet-integration-examples": "0HoA70000000006KAA",
     "Mashmatrix Sheet": "04t0K000001E4ll",

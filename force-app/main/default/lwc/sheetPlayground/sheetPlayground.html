@@ -1,0 +1,241 @@
+<template>
+  <div class="main-layout">
+    <div class="left-panel">
+      <div class="left-panel-stack">
+        <div class="left-panel-card">
+          <div class="sample-hero">
+            <div class="sample-hero-kicker">Sheet Integration</div>
+            <div class="sample-hero-title">Sheet Component Playground</div>
+            <div class="sample-hero-description">
+              Experiment with different books, sheets, parameters, and record
+              contexts in a self-contained LWC example.
+            </div>
+          </div>
+
+          <section class="panel-section">
+            <div class="section-header">
+              <div class="section-title">
+                <span class="section-icon">1</span>
+                Book &amp; Sheet
+              </div>
+              <lightning-helptext
+                content="Select a book and the sheet you want to display."
+              ></lightning-helptext>
+            </div>
+
+            <lightning-combobox
+              class="compact-field slds-m-bottom_small"
+              label="Book"
+              value={draft.bookId}
+              options={bookOptions}
+              onchange={handleBookChange}
+            ></lightning-combobox>
+
+            <lightning-combobox
+              class="compact-field"
+              label="Sheet"
+              value={draft.sheetId}
+              options={sheetOptions}
+              onchange={handleSheetChange}
+              disabled={sheetDisabled}
+            ></lightning-combobox>
+          </section>
+
+          <section class="panel-section">
+            <div class="section-header section-header-row">
+              <div class="section-title">
+                <span class="section-icon">2</span>
+                Component Settings
+              </div>
+              <lightning-helptext
+                content="Update the draft configuration. Changes are applied only after you click Apply Settings."
+              ></lightning-helptext>
+            </div>
+
+            <div class="component-config">
+              <div class="config-grid config-grid-2">
+                <lightning-input
+                  class="compact-field"
+                  label="Component ID"
+                  value={draft.componentId}
+                  disabled
+                ></lightning-input>
+
+                <lightning-input
+                  class="compact-field"
+                  label="Title"
+                  value={draft.title}
+                  onchange={handleComponentTitleChange}
+                ></lightning-input>
+              </div>
+
+              <div class="config-grid config-grid-2">
+                <lightning-input
+                  class="compact-field"
+                  type="text"
+                  label="Height"
+                  value={draft.height}
+                  onchange={handleComponentHeightChange}
+                  placeholder="500px or 80vh"
+                ></lightning-input>
+
+                <div class="checkbox-field">
+                  <lightning-input
+                    type="checkbox"
+                    label="Publish Events"
+                    checked={draft.publishEvents}
+                    onchange={handlePublishEventsChange}
+                  ></lightning-input>
+                </div>
+              </div>
+
+              <lightning-input
+                class="compact-field"
+                type="text"
+                label="Parameters"
+                value={draft.parameters}
+                onchange={handleParametersChange}
+                placeholder="e.g. param1=value1&amp;param2=value2"
+              ></lightning-input>
+
+              <div class="settings-footer">
+                <div class="settings-note">
+                  Changes won't affect the sheet until you click Apply Settings.
+                </div>
+                <lightning-button
+                  variant="brand"
+                  label="Apply Settings"
+                  onclick={handleApplySettings}
+                  class="apply-button"
+                ></lightning-button>
+              </div>
+            </div>
+          </section>
+
+          <section class="panel-section">
+            <div class="section-header">
+              <div class="section-title">
+                <span class="section-icon">3</span>
+                Record Context
+              </div>
+              <lightning-helptext
+                content="Choose which record should be used as the sheet context."
+              ></lightning-helptext>
+            </div>
+
+            <lightning-input
+              class="compact-field"
+              label="Context Record ID"
+              value={draft.contextRecordId}
+              onchange={handleContextRecordIdChange}
+            ></lightning-input>
+
+            <div
+              class="record-action-row slds-m-top_x-small slds-m-bottom_small"
+            >
+              <lightning-button
+                variant="neutral"
+                label="Use Selected Record"
+                onclick={handleUseSelectedRecord}
+                disabled={selectedRecordActionDisabled}
+              ></lightning-button>
+              <lightning-button
+                variant="neutral"
+                label="Reset to Page Record"
+                onclick={handleResetContextRecord}
+              ></lightning-button>
+            </div>
+
+            <div class="record-summary">
+              <div class="record-summary-label">Page Record ID</div>
+              <div class="record-summary-value">{pageRecordIdDisplay}</div>
+            </div>
+
+            <div class="record-summary">
+              <div class="record-summary-label">Selected Record ID</div>
+              <div class="record-summary-value">{selectedRecordIdDisplay}</div>
+            </div>
+
+            <div class="record-summary">
+              <div class="record-summary-label">Selected Record IDs</div>
+              <div class="record-summary-value summary-record-ids">
+                {selectedRecordIdsDisplay}
+              </div>
+            </div>
+
+            <div class="section-help section-help-compact">
+              The first selected record from the sheet will be used when you
+              click Use Selected Record.
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <div class="right-panel">
+      <div class="sheet-panel">
+        <div class="sample-hero">
+          <div class="sample-hero-title">Sheet Preview</div>
+        </div>
+        <div class="sheet-content">
+          <div class="sheet-container">
+            <msmxsheet-sheet-component
+              class="sheet-component"
+              title={applied.title}
+              book-id={applied.bookId}
+              sheet-id={applied.sheetId}
+              record-id={applied.contextRecordId}
+              parameters={applied.parameters}
+              publish-events={applied.publishEvents}
+              component-id={applied.componentId}
+              height={applied.height}
+              onselectrecord={handleSelectRecord}
+            ></msmxsheet-sheet-component>
+          </div>
+        </div>
+      </div>
+      <div class="event-log-panel">
+        <div class="event-log-header">
+          <div class="event-log-title">Event Log</div>
+          <lightning-button
+            variant="neutral"
+            label="Clear Log"
+            icon-name="utility:delete"
+            onclick={handleClearLog}
+          ></lightning-button>
+        </div>
+
+        <div class="event-log-body">
+          <template if:true={eventLogs.length}>
+            <table class="event-log-table">
+              <thead>
+                <tr>
+                  <th>Time</th>
+                  <th>Level</th>
+                  <th>Message</th>
+                  <th>Detail</th>
+                </tr>
+              </thead>
+              <tbody>
+                <template for:each={eventLogs} for:item="eventLog">
+                  <tr key={eventLog.id} class="event-log-row">
+                    <td>{eventLog.time}</td>
+                    <td>
+                      <span class={eventLog.eventClass}>{eventLog.level}</span>
+                    </td>
+                    <td>{eventLog.message}</td>
+                    <td class="event-log-detail">{eventLog.detail}</td>
+                  </tr>
+                </template>
+              </tbody>
+            </table>
+          </template>
+
+          <template if:false={eventLogs.length}>
+            <div class="empty-state">No events recorded.</div>
+          </template>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

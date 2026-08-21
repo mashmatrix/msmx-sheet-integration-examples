@@ -4,6 +4,10 @@
         <application>Mashmatrix_Sheet_Integration_Examples</application>
         <visible>true</visible>
     </applicationVisibilities>
+    <classAccesses>
+        <apexClass>SheetPlaygroundController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
     <fieldPermissions>
         <editable>true</editable>
         <field>Accommodation__c.Address__c</field>
@@ -58,6 +62,7 @@
         <allowRead>true</allowRead>
         <modifyAllRecords>false</modifyAllRecords>
         <object>Accommodation__c</object>
+        <viewAllFields>false</viewAllFields>
         <viewAllRecords>false</viewAllRecords>
     </objectPermissions>
     <tabSettings>
@@ -78,6 +83,10 @@
     </tabSettings>
     <tabSettings>
         <tab>Message_Debug</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+    <tabSettings>
+        <tab>Sheet_Playground</tab>
         <visibility>Visible</visibility>
     </tabSettings>
 </PermissionSet>
